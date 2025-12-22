@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlatformExtender : MonoBehaviour
 {
     public static PlatformExtender Instance { get; private set; }
+    Vector3 originalScale;
+    Vector3 originalPosition;
     [SerializeField] float extendAmount = 1f;
     private void Awake()
     {
@@ -10,6 +12,8 @@ public class PlatformExtender : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+        transform.localScale = originalScale;
+        transform.position = originalPosition; 
     }
     public void ExtendRight()
     {
@@ -49,5 +53,10 @@ public class PlatformExtender : MonoBehaviour
 
         transform.localScale = scale;
         transform.position = position;
+    }
+    public void ResetPlatform()
+    {
+       transform.localScale = originalScale;
+       transform.position = originalPosition; 
     }
 }
