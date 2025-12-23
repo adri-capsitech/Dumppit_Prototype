@@ -26,7 +26,11 @@ public class GamePlayManager : MonoBehaviour
     {
         SwingMotion.Instance.ResetSwing();
         GameMechanics.Instance.StartGame();
+    }    public void GameOver()
+    {
+        UIManager.Instance.DisplayGameOverPanel();
     }
+
 }
 
 
