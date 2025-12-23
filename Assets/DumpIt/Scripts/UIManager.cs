@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public Button topextbtn;
     public Button bottomextbtn;
     public Button crossbtn;
-   // public GameObject platform;
+    // public GameObject platform;
     public GameObject PausePanel;
     public GameObject PlatformExtendPanel;
 
@@ -50,16 +50,8 @@ public class UIManager : MonoBehaviour
     }
     public void TogglePause()
     {
-        if (Time.timeScale == 1)
-        {
-            Time.timeScale = 0; 
-            PausePanel.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = 1;
-            PausePanel.SetActive(false); 
-        }
+        Time.timeScale = 0;
+        PausePanel.SetActive(true);
     }
     public void ResumeGame()
     {
@@ -69,10 +61,10 @@ public class UIManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1;
-        // UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         PausePanel.SetActive(false);
-       PlatformExtender.Instance.ResetPlatform();
+        GamePlayManager.Instance.Restart();
     }
+
     public void QuitGame()
     {
         PausePanel.SetActive(false);

@@ -12,7 +12,8 @@ public class SwingMotion : MonoBehaviour
     private float randomOffset = 0f;
     public bool swingZ = true;
     public bool stopSwing = false;
-
+    private Vector3 initialLocalPosition;
+    private Quaternion initialLocalRotation;
 
     void Awake()
     {
@@ -20,6 +21,20 @@ public class SwingMotion : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        if (randomStart)
+        {
+            randomOffset = Random.Range(0f, 2f * Mathf.PI);
+        }
+        initialLocalPosition = transform.localPosition;
+        initialLocalRotation = transform.localRotation;
+    }
+    public void ResetSwing()
+    {
+        stopSwing = false;
+
+        transform.localPosition = initialLocalPosition;
+        transform.localRotation = initialLocalRotation;
 
         if (randomStart)
         {

@@ -22,7 +22,11 @@ public class GamePlayManager : MonoBehaviour
         Debug.Log("GAME: StartGame()");
         GameMechanics.Instance.StartGame();
     }
-
+    public void Restart()
+    {
+        SwingMotion.Instance.ResetSwing();
+        GameMechanics.Instance.StartGame();
+    }
 }
 
 

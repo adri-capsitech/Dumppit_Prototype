@@ -32,6 +32,8 @@ public class GameMechanics : MonoBehaviour
     }
     public void StartGame()
     {
+        ResetGameState();
+        isGameOver = false;
         SpawnCars();
     }
     void Update()
@@ -124,19 +126,23 @@ public class GameMechanics : MonoBehaviour
             SwingMotion.Instance.stopSwing = true;
             Time.timeScale = 0;
             Debug.Log("Game Over");
-            if (currentCar != null)
-            {
-                Destroy(currentCar);
-                currentCar = null;
-            }
-            var allCar = FindObjectsByType<DetectLanding>(FindObjectsSortMode.None);
-            foreach (var r in allCar)
-            {
-                Destroy(r.gameObject);
-            }
+            ResetGameState();
         }
+    }
+    public void ResetGameState()
+    {
+        PlatformExtender.Instance.ResetPlatform();
 
-
+        if (currentCar != null)
+        {
+            Destroy(currentCar);
+            currentCar = null;
+        }
+        var allCar = FindObjectsByType<DetectLanding>(FindObjectsSortMode.None);
+        foreach (var r in allCar)
+        {
+            Destroy(r.gameObject);
+        }
     }
 
 }
