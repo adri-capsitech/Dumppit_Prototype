@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameMechanics : MonoBehaviour
 {
+    public static GameMechanics Instance { get; private set; }
+
     public List<GameObject> Cars;
     public GameObject SpawnPoint;
     public GameObject currentCar;
@@ -16,8 +19,8 @@ public class GameMechanics : MonoBehaviour
     public float x, y;
     private bool isStraight = false;
 
+    public bool isGameOver = false;
 
-    public static GameMechanics Instance { get; private set; }
 
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class GameMechanics : MonoBehaviour
         currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation);
         currentCar.transform.SetParent(SpawnPoint.transform);
     }
+
     void ReleaseRustic()
     {
         if (currentCar == null)
@@ -79,23 +83,18 @@ public class GameMechanics : MonoBehaviour
     private IEnumerator CheckPos()
     {
         x = pendulum.transform.localEulerAngles.z;
-        Debug.Log("-->x" + x);
-
         yield return new WaitForSeconds(0.1f);
         y = pendulum.transform.localEulerAngles.z;
-        Debug.Log("-->y" + y);
 
         var rb = currentCar.GetComponent<Rigidbody>();
         if (!isStraight)
         {
             if ((Math.Abs(x) - Math.Abs(y)) < 0)
             {
-                Debug.Log("Right to left");
                 rb.AddForce(forceStrength * Vector3.right, ForceMode.Impulse);
             }
             else
             {
-                Debug.Log("Left to Right");
                 rb.AddForce(forceStrength * Vector3.left, ForceMode.Impulse);
             }
         }
@@ -103,40 +102,36 @@ public class GameMechanics : MonoBehaviour
         {
             if ((x - y) > 0)
             {
-                Debug.Log("right to left");
                 rb.AddForce(forceStrength * Vector3.left, ForceMode.Impulse);
             }
             else
             {
-                Debug.Log("Left to Right");
                 rb.AddForce(forceStrength * Vector3.right, ForceMode.Impulse);
             }
         }
         currentCar = null;
     }
 
+    public void GameOver()
+    {
+        if (isGameOver == true)
+        {
+            SwingMotion.Instance.stopSwing = true;
+            Time.timeScale = 0;
+            Debug.Log("Game Over");
+            if (currentCar != null)
+            {
+                Destroy(currentCar);
+                currentCar = null;
+            }
+            var allCar = FindObjectsByType<DetectLanding>(FindObjectsSortMode.None);
+            foreach (var r in allCar)
+            {
+                Destroy(r.gameObject);
+            }
+        }
 
-    // public void OnCarLanded(GameObject landedCar)
-    // {
-    //     float carTopY = landedCar.transform.position.y +
-    //                     landedCar.GetComponent<Renderer>().bounds.extents.y;
 
-    //     if (carTopY > highestStackY)
-    //         highestStackY = carTopY;
+    }
 
-    //     UpdateCraneAndCamera();
-    // }
-    // void UpdateCraneAndCamera()
-    // {
-    //     float targetY = highestStackY + craneOffset;
-
-    //     Vector3 cranePos = SpawnPoint.transform.position;
-    //     cranePos.y = Mathf.Lerp(
-    //         cranePos.y,
-    //         targetY,
-    //         Time.deltaTime * craneMoveSpeed
-    //     );
-
-    //     SpawnPoint.transform.position = cranePos;
-    // }
 }

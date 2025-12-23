@@ -5,16 +5,31 @@ public class DetectLanding : MonoBehaviour
 {
     public bool hasLanded = false;
 
-    private void OnCollisionEnter(Collision collision)
+    void Update()
     {
-        if (collision.collider.CompareTag("Platform") || collision.collider.CompareTag("Car"))
+        if (gameObject.transform.position.y < -0.5)
         {
-            GameMechanics.Instance.SpawnCars();
-           // GameMechanics.Instance.OnCarLanded(gameObject);
+            GameMechanics.Instance.isGameOver = true;
+            GameMechanics.Instance.GameOver();
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (hasLanded) return;
 
+        if (collision.collider.CompareTag("Platform") || collision.collider.CompareTag("Car"))
+        {
+            hasLanded = true;
+
+            GameMechanics.Instance.SpawnCars();
+            DataManager.Instance.UpdateScore();
+            int score = DataManager.Instance.GetCurrentScore();
+            Debug.Log("Score is - " + score);
+
+
+        }
+    }
 
 
 }

@@ -11,22 +11,24 @@ public class DataManager : MonoBehaviour
 
     private const string SCORE_KEY = "CURRENT_SCORE";
     private const string BEST_SCORE_KEY = "BEST_SCORE";
+
+    private const string COIN_KEY = "COIN_KEY";
     private const string DYNAMIC_HIGH_SCORE_KEY = "DYNAMIC_BEST_SCORE";
+
     public int FinalScore = 0;
     public int Score = 0;
     public event Action<int> OnNewBestScore;
     public event Action<int> OnScoreUpdated;
     private bool highScoreAchieved = false;
+    private int nextCoinMilestone = 100;
+    private int coins = 0;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)  
-        {
+        if (Instance == null)
+            Instance = this;
+        else
             Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         if (!PlayerPrefs.HasKey(BEST_SCORE_KEY))
         {
@@ -53,28 +55,50 @@ public class DataManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt(DYNAMIC_HIGH_SCORE_KEY, 0);
     }
+    public int GetCurrentCoins()
+    {
+        return PlayerPrefs.GetInt(COIN_KEY, 0);
+    }
 
     public void UpdateScore()
     {
-        highScoreAchieved = false;
+        // highScoreAchieved = false;
+        // Score += 10;
+        // PlayerPrefs.SetInt(SCORE_KEY, Score);
+        // PlayerPrefs.Save();
+        // FinalScore = Score;
+        // // Debug.Log("The final score is " + FinalScore);
+        // int bestScore = GetBestScore();
+        // OnScoreUpdated?.Invoke(FinalScore);
+
+        // if (FinalScore > bestScore && !PlayerPrefs.HasKey(DYNAMIC_HIGH_SCORE_KEY))
+        // {
+        //     PlayerPrefs.SetInt(DYNAMIC_HIGH_SCORE_KEY, FinalScore);
+        //     OnNewBestScore?.Invoke(FinalScore);
+        //     Debug.Log("-> New High Score Reached DURING GAMEPLAY");
+        //     if (FinalScore != 1)
+        //         highScoreAchieved = true;
+
+        // }
+        // SaveBestScoreIfNeeded();
         Score += 10;
         PlayerPrefs.SetInt(SCORE_KEY, Score);
         PlayerPrefs.Save();
-        FinalScore = Score;
-        Debug.Log("The final score is " + FinalScore);
-        int bestScore = GetBestScore();
-        OnScoreUpdated?.Invoke(FinalScore);
 
-        if (FinalScore > bestScore && !PlayerPrefs.HasKey(DYNAMIC_HIGH_SCORE_KEY))
-        {
-            PlayerPrefs.SetInt(DYNAMIC_HIGH_SCORE_KEY, FinalScore);
-            OnNewBestScore?.Invoke(FinalScore);
-            Debug.Log("-> New High Score Reached DURING GAMEPLAY");
-            if (FinalScore != 1)
-                highScoreAchieved = true;
+        OnScoreUpdated?.Invoke(Score);
 
-        }
+        CheckCoinReward();
         SaveBestScoreIfNeeded();
+    }
+    private void CheckCoinReward()
+    {
+        if (GetCurrentScore() >= nextCoinMilestone)
+        {
+            coins += 20;
+            PlayerPrefs.SetInt(COIN_KEY, coins);
+            PlayerPrefs.Save();
+            nextCoinMilestone += 100;
+        }
     }
 
     public bool HasHighScore()
@@ -85,14 +109,15 @@ public class DataManager : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.SetInt(SCORE_KEY, 0);
-        PlayerPrefs.DeleteKey(DYNAMIC_HIGH_SCORE_KEY);
+        // PlayerPrefs.DeleteKey(DYNAMIC_HIGH_SCORE_KEY);
         PlayerPrefs.Save();
         Score = 0;
         OnScoreUpdated?.Invoke(Score);
-
+        FinalScore = 0;
+        highScoreAchieved = false;
+        coins = 0;
+        nextCoinMilestone = 100;
     }
-
-
     public void SaveBestScoreIfNeeded()
     {
         int finalScore = FinalScore;
@@ -102,6 +127,8 @@ public class DataManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(BEST_SCORE_KEY, finalScore);
             PlayerPrefs.Save();
+            highScoreAchieved = true;
+            OnNewBestScore?.Invoke(Score);
         }
     }
 
