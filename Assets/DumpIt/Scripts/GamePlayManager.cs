@@ -22,11 +22,11 @@ public class GamePlayManager : MonoBehaviour
         Debug.Log("GAME: StartGame()");
         GameMechanics.Instance.StartGame();
     }
-    public void Restart()
+    public void GameOver()
     {
-        SwingMotion.Instance.ResetSwing();
-        GameMechanics.Instance.StartGame();
+        UIManager.Instance.DisplayGameOverPanel();
     }
+
 }
 
 
