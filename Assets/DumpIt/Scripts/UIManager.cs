@@ -19,8 +19,7 @@ public class UIManager : MonoBehaviour
     public Button topextbtn;
     public Button bottomextbtn;
     public Button crossbtn;
-   // public GameObject platform;
-    public GameObject GameOverPanel;
+    // public GameObject platform;
     public GameObject PausePanel;
     public GameObject PlatformExtendPanel;
     public TMP_Text Score;
@@ -57,13 +56,13 @@ public class UIManager : MonoBehaviour
     {
         if (Time.timeScale == 1)
         {
-            Time.timeScale = 0; 
+            Time.timeScale = 0;
             PausePanel.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
-            PausePanel.SetActive(false); 
+            PausePanel.SetActive(false);
         }
     }
     public void ResumeGame()
@@ -76,7 +75,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         // UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         PausePanel.SetActive(false);
-       PlatformExtender.Instance.ResetPlatform();
+        PlatformExtender.Instance.ResetPlatform();
     }
     public void QuitGame()
     {
@@ -128,19 +127,16 @@ public class UIManager : MonoBehaviour
     }
     public void DisplayGameOverPanel()
     {
-        GetBestScore();
-        GetHighScore();
-        GameOverPanel.SetActive(true);
-
+        AppStateManager.Instance.SetGameOver();
     }
-    public void GetBestScore()
-    {
-        // DataManager.Instance.GetCurrentScore();
-        Score.text= DataManager.Instance.GetCurrentScore().ToString();
-    }
-    public void GetHighScore()
-    {
-        // DataManager.Instance.GetBestScore();
-        BestScore.text=DataManager.Instance.GetBestScore().ToString();
-    }
+    // public void GetBestScore()
+    // {
+    //     // DataManager.Instance.GetCurrentScore();
+    //     Score.text = DataManager.Instance.GetCurrentScore().ToString();
+    // }
+    // public void GetHighScore()
+    // {
+    //     // DataManager.Instance.GetBestScore();
+    //     BestScore.text = DataManager.Instance.GetBestScore().ToString();
+    // }
 }

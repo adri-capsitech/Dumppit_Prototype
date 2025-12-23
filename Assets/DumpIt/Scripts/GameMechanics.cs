@@ -127,6 +127,7 @@ public class GameMechanics : MonoBehaviour
             Time.timeScale = 0;
             Debug.Log("Game Over");
             ResetGameState();
+            GamePlayManager.Instance.GameOver();
         }
     }
     public void ResetGameState()
