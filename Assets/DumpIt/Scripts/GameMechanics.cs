@@ -134,6 +134,7 @@ public class GameMechanics : MonoBehaviour
             {
                 Destroy(r.gameObject);
             }
+            GamePlayManager.Instance.GameOver();
         }
 
 

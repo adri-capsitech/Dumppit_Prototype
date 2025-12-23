@@ -22,6 +22,10 @@ public class GamePlayManager : MonoBehaviour
         Debug.Log("GAME: StartGame()");
         GameMechanics.Instance.StartGame();
     }
+    public void GameOver()
+    {
+        UIManager.Instance.DisplayGameOverPanel();
+    }
 
 }
 
