@@ -29,7 +29,7 @@ public class GameMechanics : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    void Start()
+    public void StartGame()
     {
         SpawnCars();
     }

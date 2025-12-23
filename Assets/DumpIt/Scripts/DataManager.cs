@@ -109,6 +109,7 @@ public class DataManager : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.SetInt(SCORE_KEY, 0);
+        PlayerPrefs.SetInt(COIN_KEY, 0);
         // PlayerPrefs.DeleteKey(DYNAMIC_HIGH_SCORE_KEY);
         PlayerPrefs.Save();
         Score = 0;

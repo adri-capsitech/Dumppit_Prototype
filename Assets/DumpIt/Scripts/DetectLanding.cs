@@ -27,6 +27,15 @@ public class DetectLanding : MonoBehaviour
             int score = DataManager.Instance.GetCurrentScore();
             Debug.Log("Score is - " + score);
 
+            int coins = DataManager.Instance.GetCurrentCoins();
+            if (coins >= 20)
+            {
+                Debug.Log(" YOu get to use platform extender");
+            }
+            else if (coins >= 30)
+            {
+                Debug.Log("You get to change the direction of swing");
+            }
 
         }
     }
