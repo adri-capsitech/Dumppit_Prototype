@@ -1,9 +1,7 @@
 using System;
-using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,11 +18,8 @@ public class UIManager : MonoBehaviour
     public Button bottomextbtn;
     public Button crossbtn;
     // public GameObject platform;
-    public GameObject GameOverPanel;
     public GameObject PausePanel;
     public GameObject PlatformExtendPanel;
-    public TMP_Text Score;
-    public TMP_Text BestScore;
 
     private void Awake()
     {
@@ -117,22 +112,5 @@ public class UIManager : MonoBehaviour
             return;
         }
         PlatformExtender.Instance.ExtendBack();
-    }
-    public void DisplayGameOverPanel()
-    {
-        GetBestScore();
-        GetHighScore();
-        GameOverPanel.SetActive(true);
-
-    }
-    public void GetBestScore()
-    {
-        // DataManager.Instance.GetCurrentScore();
-        Score.text= DataManager.Instance.GetCurrentScore().ToString();
-    }
-    public void GetHighScore()
-    {
-        // DataManager.Instance.GetBestScore();
-        BestScore.text=DataManager.Instance.GetBestScore().ToString();
     }
 }
