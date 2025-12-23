@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameMechanics : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class GameMechanics : MonoBehaviour
     }
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             ReleaseRustic();
