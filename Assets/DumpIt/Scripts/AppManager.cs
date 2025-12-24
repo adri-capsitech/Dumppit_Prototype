@@ -1,8 +1,12 @@
 using UnityEngine;
 
 public class AppManager : MonoBehaviour
-{    public static AppManager Instance { get; private set; }
+{
+    public static AppManager Instance { get; private set; }
     [SerializeField] private GameObject GameLogicPrefab;
+    [SerializeField]
+    private GameObject HomeScreen;
+
     private GameObject GameLogic;
 
 
@@ -16,12 +20,16 @@ public class AppManager : MonoBehaviour
 
     void Start()
     {
-        AppStateManager.Instance.SetGameplay();
-        this.StartGame();
+        AppStateManager.Instance.SetHome();
+
+
+        // this.StartGame();
     }
 
     public void StartGame()
     {
+
+        AppStateManager.Instance.SetGameplay();
         if (GameLogic == null)
         {
             GameLogic = Instantiate(GameLogicPrefab);
@@ -44,3 +52,4 @@ public class AppManager : MonoBehaviour
 
 
 }
+
