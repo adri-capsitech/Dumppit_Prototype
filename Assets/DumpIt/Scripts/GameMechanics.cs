@@ -134,7 +134,6 @@ public class GameMechanics : MonoBehaviour
     public void ResetGameState()
     {
         PlatformExtender.Instance.ResetPlatform();
-
         if (currentCar != null)
         {
             Destroy(currentCar);
