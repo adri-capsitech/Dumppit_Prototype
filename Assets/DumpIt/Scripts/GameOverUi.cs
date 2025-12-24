@@ -38,11 +38,14 @@ public class GameOverUi : MonoBehaviour
     {
 
         Debug.Log("Home Button Clicked");
-        // DataManager.Instance.SaveBestScoreIfNeeded();
+        DataManager.Instance.SaveBestScoreIfNeeded();
+        // Destroy(AppManager.Instance.GameLogicPrefab);
+
         // GamePlayManager.Instance.EndGame();
 
         // // Go to home screen - overlays will be hidden automatically after this frame
-        // AppStateManager.Instance.SetHome();
+        AppManager.Instance.ExitGame();
+        AppStateManager.Instance.SetHome();
         // AppStateManager.Instance.HideOverlay("FinalScorePopUp");
     }
 

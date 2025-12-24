@@ -3,7 +3,7 @@ using UnityEngine;
 public class AppManager : MonoBehaviour
 {
     public static AppManager Instance { get; private set; }
-    [SerializeField] private GameObject GameLogicPrefab;
+    public GameObject GameLogicPrefab;
     [SerializeField]
     private GameObject HomeScreen;
 
@@ -21,9 +21,10 @@ public class AppManager : MonoBehaviour
     void Start()
     {
         AppStateManager.Instance.SetHome();
+        //  AppStateManager.Instance.SetGameplay();
 
 
-        // this.StartGame();
+        //this.StartGame();
     }
 
     public void StartGame()
@@ -39,9 +40,16 @@ public class AppManager : MonoBehaviour
 
     public void ExitGame()
     {
+
+        DestroyGameLogic();
+
+    }
+    private void DestroyGameLogic()
+    {
         if (GameLogic != null)
         {
-            GameLogic.SetActive(false);
+            Destroy(GameLogic);
+            GameLogic = null;
         }
     }
 
