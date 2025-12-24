@@ -35,6 +35,7 @@ public class GameMechanics : MonoBehaviour
         ResetGameState();
         isGameOver = false;
         SpawnCars();
+        SwingMotion.Instance.stopSwing = false;
     }
     void Update()
     {

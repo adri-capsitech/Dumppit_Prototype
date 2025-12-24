@@ -3,19 +3,23 @@ using UnityEngine;
 public class AppManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    public static AppManager Instance { get; private set; }
     [SerializeField] private GameObject GameLogicPrefab;
     private GameObject GameLogic;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     void Start()
     {
         AppStateManager.Instance.SetGameplay();
         this.StartGame();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void StartGame()
@@ -31,7 +35,14 @@ public class AppManager : MonoBehaviour
     {
         if (GameLogic != null)
         {
-            Destroy(GameLogic);
+            GameLogic.SetActive(false);
         }
     }
+
+    public void RestartGame()
+    {
+        GameLogic.SetActive(true);
+    }
+
+
 }

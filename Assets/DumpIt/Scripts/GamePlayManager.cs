@@ -10,7 +10,7 @@ public class GamePlayManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -25,6 +25,11 @@ public class GamePlayManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.DisplayGameOverPanel();
+        // SwingMotion.Instance.ResetSwing();
+    }
+    public void Restart()
+    {
+        GameMechanics.Instance.StartGame();
     }
 
 }

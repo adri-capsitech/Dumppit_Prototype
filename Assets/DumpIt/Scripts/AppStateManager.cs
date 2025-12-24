@@ -86,8 +86,8 @@ public class AppStateManager : MonoBehaviour
         }
         Instance = this;
 
-        if (_dontDestroyOnLoad)
-            DontDestroyOnLoad(gameObject);
+        // if (_dontDestroyOnLoad)
+        //     DontDestroyOnLoad(gameObject);
 
         RefreshFromPages();
 

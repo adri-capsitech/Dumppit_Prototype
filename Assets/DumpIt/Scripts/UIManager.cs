@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -54,28 +54,21 @@ public class UIManager : MonoBehaviour
     }
     public void TogglePause()
     {
-        if (Time.timeScale == 1)
-        {
-            Time.timeScale = 0;
-            PausePanel.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = 1;
-            PausePanel.SetActive(false);
-        }
+        Time.timeScale = 0;
+        PausePanel.SetActive(true);
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        // GamePlayManager.Instance.Restart();
         PausePanel.SetActive(false);
     }
     public void RestartGame()
     {
         Time.timeScale = 1;
-        // UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         PausePanel.SetActive(false);
         PlatformExtender.Instance.ResetPlatform();
+        GamePlayManager.Instance.Restart();
     }
     public void QuitGame()
     {
@@ -127,6 +120,7 @@ public class UIManager : MonoBehaviour
     }
     public void DisplayGameOverPanel()
     {
+        AppManager.Instance.ExitGame();
         AppStateManager.Instance.SetGameOver();
     }
     // public void GetBestScore()
