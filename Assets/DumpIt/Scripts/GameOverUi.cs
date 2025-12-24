@@ -20,6 +20,9 @@ public class GameOverUi : MonoBehaviour
     private void OnEnable()
     {
         var result = DataManager.Instance.GetFinalResult();
+
+        bestScoreText.text = result.bestScore.ToString();
+        finalScoreText.text = result.finalScore.ToString();
         // Add button listeners
         homeButton.onClick.AddListener(OnHomeButtonClicked);
         retryButton.onClick.AddListener(OnRetryButtonClicked);
@@ -49,7 +52,6 @@ public class GameOverUi : MonoBehaviour
         AppStateManager.Instance.SetGameplay();
         AppManager.Instance.RestartGame();
         UIManager.Instance.RestartGame();
-
     }
 
     // public void UpdateScore(int score)

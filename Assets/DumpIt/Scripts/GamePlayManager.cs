@@ -24,11 +24,13 @@ public class GamePlayManager : MonoBehaviour
     }
     public void GameOver()
     {
+        DataManager.Instance.SaveBestScoreIfNeeded();
         UIManager.Instance.DisplayGameOverPanel();
-        // SwingMotion.Instance.ResetSwing();
     }
     public void Restart()
     {
+
+        DataManager.Instance.ResetScore();
         GameMechanics.Instance.StartGame();
     }
 

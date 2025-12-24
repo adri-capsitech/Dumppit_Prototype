@@ -1,9 +1,7 @@
 using UnityEngine;
 
 public class AppManager : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public static AppManager Instance { get; private set; }
+{    public static AppManager Instance { get; private set; }
     [SerializeField] private GameObject GameLogicPrefab;
     private GameObject GameLogic;
 
