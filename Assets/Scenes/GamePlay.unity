@@ -416,6 +416,9 @@ MonoBehaviour:
   - name: GameOverScreen
     state: 10
     prefab: {fileID: 3511432948340884071, guid: 708ff275f2eae31488b26eb92fd6cd28, type: 3}
+  - name: HomeScreen
+    state: 5
+    prefab: {fileID: 1334456685375714757, guid: 0523486eb9a5e714aba8ee4301b8c1bb, type: 3}
   overlays: []
 --- !u!4 &467253650
 Transform:
@@ -555,6 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameLogicPrefab: {fileID: 7207157664145320569, guid: b078783602d69a6439b4caea069e0e1e, type: 3}
+  HomeScreen: {fileID: 1334456685375714757, guid: 0523486eb9a5e714aba8ee4301b8c1bb, type: 3}
 --- !u!4 &1168107266
 Transform:
   m_ObjectHideFlags: 0
@@ -638,8 +642,8 @@ Canvas:
   m_GameObject: {fileID: 1308633012}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 330585545}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
