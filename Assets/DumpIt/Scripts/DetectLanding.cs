@@ -7,7 +7,7 @@ public class DetectLanding : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.transform.position.y < -0.5)
+        if (gameObject.transform.position.y < -5.5)
         {
             GameMechanics.Instance.isGameOver = true;
             GameMechanics.Instance.GameOver();
@@ -28,15 +28,6 @@ public class DetectLanding : MonoBehaviour
             Debug.Log("Score is - " + score);
 
             int coins = DataManager.Instance.GetCurrentCoins();
-            // if (coins >= 20)
-            // {
-            //     Debug.Log(" YOu get to use platform extender");
-            // }
-            // else if (coins >= 30)
-            // {
-            //     Debug.Log("You get to change the direction of swing");
-            // }
-
         }
     }
 
