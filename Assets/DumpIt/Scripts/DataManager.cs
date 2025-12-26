@@ -22,7 +22,7 @@ public class DataManager : MonoBehaviour
     public event Action<int> OnCoinsUpdated;
 
     private bool highScoreAchieved = false;
-    private int nextCoinMilestone = 20;
+    private int nextCoinMilestone = 100;
     private int coins = 0;
 
     private void Awake()
@@ -83,22 +83,9 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt(COIN_KEY, coins);
             PlayerPrefs.Save();
             OnCoinsUpdated?.Invoke(coins);
-            nextCoinMilestone += 20;
+            nextCoinMilestone += 100;
         }
     }
-    // public void UpdateCoinReward(int amount)
-    // {
-    //     if (amount == 20)
-    //         Debug.Log("20 coins used for platform extender");
-    //     else if (amount == 30)
-    //         Debug.Log("30 coins used for swing powerup");
-    //     coins -= amount;
-    //     PlayerPrefs.SetInt(COIN_KEY, coins);
-    //     PlayerPrefs.Save();
-    //     OnCoinsUpdated?.Invoke(coins);
-
-
-    // }
     public bool SpendCoins(int amount)
     {
         if (coins < amount)
@@ -129,7 +116,7 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt(COIN_KEY, 0);
         PlayerPrefs.Save();
         coins = 0;
-        nextCoinMilestone = 20;
+        nextCoinMilestone = 100;
     }
     public void SaveBestScoreIfNeeded()
     {
