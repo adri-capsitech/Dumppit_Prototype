@@ -88,6 +88,8 @@ public class UIManager : MonoBehaviour
         PausePanel.SetActive(false);
         PlatformExtender.Instance.ResetPlatform();
         GamePlayManager.Instance.Restart();
+        DataManager.Instance.ResetScore();
+
     }
 
     public void QuitGame()

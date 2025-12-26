@@ -32,6 +32,7 @@ public class GameMechanics : MonoBehaviour
     }
     public void StartGame()
     {
+        Time.timeScale = 1f;
         ResetGameState();
         isGameOver = false;
         SpawnCars();
@@ -65,26 +66,28 @@ public class GameMechanics : MonoBehaviour
             return;
         }
         var rb = currentCar.GetComponent<Rigidbody>();
-        float angle = pendulum.transform.localEulerAngles.z;
+        float angleZ = pendulum.transform.localEulerAngles.z;
+        float angleX = pendulum.transform.localEulerAngles.x;
 
-        if (angle > 180f)
-            angle -= 360f;
+        if (angleZ > 180f)
+            angleZ -= 360f;
+        if (angleX > 180f)
+            angleX -= 360f;
 
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.freezeRotation = false;
         currentCar.transform.SetParent(null);
 
-        if (angle < 0)
+        // Check which axis has larger swing
+        if (Math.Abs(angleZ) > Math.Abs(angleX))
         {
-            isStraight = false;
+            isStraight = angleZ >= 0;
             StartCoroutine(CheckPos());
         }
-
         else
         {
-            isStraight = true;
-            StartCoroutine(CheckPos());
+            StartCoroutine(CheckXRotation());
         }
     }
 
@@ -116,6 +119,24 @@ public class GameMechanics : MonoBehaviour
             {
                 rb.AddForce(forceStrength * Vector3.right, ForceMode.Impulse);
             }
+        }
+        currentCar = null;
+    }
+    public IEnumerator CheckXRotation()
+    {
+        float xStart = pendulum.transform.localEulerAngles.x;
+        yield return new WaitForSeconds(0.1f);
+        float xEnd = pendulum.transform.localEulerAngles.x;
+
+        var rb = currentCar.GetComponent<Rigidbody>();
+
+        if ((xStart - xEnd) > 0)
+        {
+            rb.AddForce(forceStrength * Vector3.forward, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(forceStrength * Vector3.back, ForceMode.Impulse);
         }
         currentCar = null;
     }

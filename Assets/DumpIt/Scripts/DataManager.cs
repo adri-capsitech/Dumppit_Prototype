@@ -120,12 +120,14 @@ public class DataManager : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.SetInt(SCORE_KEY, 0);
-        PlayerPrefs.SetInt(COIN_KEY, 0);
         PlayerPrefs.Save();
         Score = 0;
         OnScoreUpdated?.Invoke(Score);
+        OnCoinsUpdated?.Invoke(coins);
         FinalScore = 0;
         highScoreAchieved = false;
+        PlayerPrefs.SetInt(COIN_KEY, 0);
+        PlayerPrefs.Save();
         coins = 0;
         nextCoinMilestone = 20;
     }
