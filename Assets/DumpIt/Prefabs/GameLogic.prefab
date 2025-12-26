@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cars:
   - {fileID: 3822047127385792909, guid: ea22ac0cf1ec9014dab84976277ba1ce, type: 3}
+  - {fileID: 3822047127385792909, guid: f55d8b043c154bb4db9f32911e44f7a8, type: 3}
   SpawnPoint: {fileID: 184733680865422554}
   currentCar: {fileID: 0}
   pendulum: {fileID: 2670727390882814949}
