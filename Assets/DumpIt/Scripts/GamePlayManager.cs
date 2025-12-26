@@ -29,7 +29,6 @@ public class GamePlayManager : MonoBehaviour
     }
     public void Restart()
     {
-
         DataManager.Instance.ResetScore();
         GameMechanics.Instance.StartGame();
     }

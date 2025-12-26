@@ -22,8 +22,6 @@ public class AppManager : MonoBehaviour
     {
         AppStateManager.Instance.SetHome();
         //  AppStateManager.Instance.SetGameplay();
-
-
         //this.StartGame();
     }
 
@@ -55,7 +53,7 @@ public class AppManager : MonoBehaviour
 
     public void RestartGame()
     {
-        GameLogic.SetActive(true);
+        StartGame();
     }
 
 
