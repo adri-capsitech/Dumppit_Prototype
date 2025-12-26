@@ -19,8 +19,10 @@ public class DataManager : MonoBehaviour
     public int Score = 0;
     public event Action<int> OnNewBestScore;
     public event Action<int> OnScoreUpdated;
+    public event Action<int> OnCoinsUpdated;
+
     private bool highScoreAchieved = false;
-    private int nextCoinMilestone = 100;
+    private int nextCoinMilestone = 20;
     private int coins = 0;
 
     private void Awake()
@@ -35,8 +37,13 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt(BEST_SCORE_KEY, 0);
             PlayerPrefs.Save();
         }
+
+        PlayerPrefs.SetInt(COIN_KEY, 0);
+        PlayerPrefs.Save();
+
+        coins = 0;
     }
-    
+
     public int GetCurrentScore()
     {
         return PlayerPrefs.GetInt(SCORE_KEY, 0);
@@ -75,8 +82,34 @@ public class DataManager : MonoBehaviour
             coins += 20;
             PlayerPrefs.SetInt(COIN_KEY, coins);
             PlayerPrefs.Save();
-            nextCoinMilestone += 100;
+            OnCoinsUpdated?.Invoke(coins);
+            nextCoinMilestone += 20;
         }
+    }
+    // public void UpdateCoinReward(int amount)
+    // {
+    //     if (amount == 20)
+    //         Debug.Log("20 coins used for platform extender");
+    //     else if (amount == 30)
+    //         Debug.Log("30 coins used for swing powerup");
+    //     coins -= amount;
+    //     PlayerPrefs.SetInt(COIN_KEY, coins);
+    //     PlayerPrefs.Save();
+    //     OnCoinsUpdated?.Invoke(coins);
+
+
+    // }
+    public bool SpendCoins(int amount)
+    {
+        if (coins < amount)
+            return false;
+
+        coins -= amount;
+        PlayerPrefs.SetInt(COIN_KEY, coins);
+        PlayerPrefs.Save();
+
+        OnCoinsUpdated?.Invoke(coins);
+        return true;
     }
 
     public bool HasHighScore()
@@ -94,7 +127,7 @@ public class DataManager : MonoBehaviour
         FinalScore = 0;
         highScoreAchieved = false;
         coins = 0;
-        nextCoinMilestone = 100;
+        nextCoinMilestone = 20;
     }
     public void SaveBestScoreIfNeeded()
     {

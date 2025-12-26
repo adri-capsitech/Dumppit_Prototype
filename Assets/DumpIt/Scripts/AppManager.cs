@@ -34,6 +34,7 @@ public class AppManager : MonoBehaviour
             GameLogic = Instantiate(GameLogicPrefab);
         }
         GameLogic.SetActive(true);
+        DataManager.Instance.ResetScore();
     }
 
     public void ExitGame()

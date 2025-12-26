@@ -1,6 +1,3 @@
-using System;
-using System.Data;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -19,18 +16,16 @@ public class UIManager : MonoBehaviour
     public Button topextbtn;
     public Button bottomextbtn;
     public Button crossbtn;
-    // public GameObject platform;
     public GameObject PausePanel;
     public GameObject PlatformExtendPanel;
     public TMP_Text Score;
-    public TMP_Text BestScore;
+    public TMP_Text Coin;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            // DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -43,7 +38,8 @@ public class UIManager : MonoBehaviour
         Resumebtn.onClick.AddListener(ResumeGame);
         Restartbtn.onClick.AddListener(RestartGame);
         Quitbtn.onClick.AddListener(QuitGame);
-        Platformbtn.onClick.AddListener(PlatformExtend);
+        Platformbtn.onClick.AddListener(UsePlatformPowerUp);
+        Osciallate.onClick.AddListener(UseSwingPowerUp);
         crossbtn.onClick.AddListener(ClosePlatform);
         leftextbtn.onClick.AddListener(LeftExtent);
         rightextbtn.onClick.AddListener(RightExtent);
@@ -51,18 +47,41 @@ public class UIManager : MonoBehaviour
         bottomextbtn.onClick.AddListener(BottomExtent);
         PausePanel.SetActive(false);
         PlatformExtendPanel.SetActive(false);
+
+        if (GamePlayManager.Instance != null)
+            GamePlayManager.Instance.ScoreTextUI = Score;
+
+        if (DataManager.Instance != null)
+        {
+            UpdateScoreText(DataManager.Instance.GetCurrentScore());
+            UpdateCoinText(DataManager.Instance.GetCurrentCoins());
+
+            DataManager.Instance.OnScoreUpdated += UpdateScoreText;
+            DataManager.Instance.OnCoinsUpdated += OnCoinsUpdated;
+        }
+
+        Platformbtn.interactable = false;
+        Osciallate.interactable = false;
+        CheckPowerUps();
     }
+    private void OnCoinsUpdated(int coins)
+    {
+        UpdateCoinText(coins);
+        CheckPowerUps();
+    }
+
     public void TogglePause()
     {
         Time.timeScale = 0;
         PausePanel.SetActive(true);
     }
+
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        // GamePlayManager.Instance.Restart();
         PausePanel.SetActive(false);
     }
+
     public void RestartGame()
     {
         Time.timeScale = 1;
@@ -70,20 +89,23 @@ public class UIManager : MonoBehaviour
         PlatformExtender.Instance.ResetPlatform();
         GamePlayManager.Instance.Restart();
     }
+
     public void QuitGame()
     {
         AppManager.Instance.ExitGame();
         AppStateManager.Instance.SetHome();
         PausePanel.SetActive(false);
     }
-    public void PlatformExtend()
+    public void OpenPlatformExtendPanel()
     {
         PlatformExtendPanel.SetActive(true);
     }
+
     public void ClosePlatform()
     {
         PlatformExtendPanel.SetActive(false);
     }
+
     public void LeftExtent()
     {
         if (PlatformExtender.Instance == null)
@@ -92,7 +114,9 @@ public class UIManager : MonoBehaviour
             return;
         }
         PlatformExtender.Instance.ExtendLeft();
+        MakeButtonsNotInteractable();
     }
+
     public void RightExtent()
     {
         if (PlatformExtender.Instance == null)
@@ -101,7 +125,9 @@ public class UIManager : MonoBehaviour
             return;
         }
         PlatformExtender.Instance.ExtendRight();
+        MakeButtonsNotInteractable();
     }
+
     public void TopExtent()
     {
         if (PlatformExtender.Instance == null)
@@ -110,7 +136,9 @@ public class UIManager : MonoBehaviour
             return;
         }
         PlatformExtender.Instance.ExtendForward();
+        MakeButtonsNotInteractable();
     }
+
     public void BottomExtent()
     {
         if (PlatformExtender.Instance == null)
@@ -119,20 +147,81 @@ public class UIManager : MonoBehaviour
             return;
         }
         PlatformExtender.Instance.ExtendBack();
+        MakeButtonsNotInteractable();
     }
+
     public void DisplayGameOverPanel()
     {
         AppManager.Instance.ExitGame();
         AppStateManager.Instance.SetGameOver();
     }
-    // public void GetBestScore()
-    // {
-    //     // DataManager.Instance.GetCurrentScore();
-    //     Score.text = DataManager.Instance.GetCurrentScore().ToString();
-    // }
-    // public void GetHighScore()
-    // {
-    //     // DataManager.Instance.GetBestScore();
-    //     BestScore.text = DataManager.Instance.GetBestScore().ToString();
-    // }
+
+    private void UpdateScoreText(int currentScore)
+    {
+        if (Score != null)
+            Score.text = currentScore.ToString();
+    }
+    private void UpdateCoinText(int currentCoins)
+    {
+        if (Coin != null)
+            Coin.text = currentCoins.ToString();
+    }
+
+
+    private void OnDestroy()
+    {
+        if (DataManager.Instance != null)
+        {
+            DataManager.Instance.OnScoreUpdated -= UpdateScoreText;
+            DataManager.Instance.OnCoinsUpdated -= OnCoinsUpdated;
+        }
+    }
+
+    public void CheckPowerUps()
+    {
+        int coins = DataManager.Instance.GetCurrentCoins();
+        Debug.Log($"--------------------->>>>>>>>>>>>>>Current Coins --->>: {coins}");
+
+        if (coins >= 20)
+        {
+            Platformbtn.interactable = true;
+        }
+        else
+            Platformbtn.interactable = false;
+
+        if (coins >= 30)
+            Osciallate.interactable = true;
+        else
+            Osciallate.interactable = false;
+    }
+
+    public void UsePlatformPowerUp()
+    {
+        if (DataManager.Instance.SpendCoins(20))
+        {
+            CheckPowerUps();
+            OpenPlatformExtendPanel();
+            leftextbtn.interactable = true;
+            rightextbtn.interactable = true;
+            topextbtn.interactable = true;
+            bottomextbtn.interactable = true;
+        }
+    }
+
+    public void UseSwingPowerUp()
+    {
+        if (DataManager.Instance.SpendCoins(30))
+        {
+            CheckPowerUps();
+            SwingMotion.Instance.swingZ = !SwingMotion.Instance.swingZ;
+        }
+
+    }
+    public void MakeButtonsNotInteractable()
+    {
+        leftextbtn.interactable = false;
+        rightextbtn.interactable = false;
+        topextbtn.interactable = false;
+        bottomextbtn.interactable = false;
+    }
 }
