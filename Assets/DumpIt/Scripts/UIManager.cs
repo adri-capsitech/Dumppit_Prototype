@@ -72,6 +72,8 @@ public class UIManager : MonoBehaviour
     }
     public void QuitGame()
     {
+        AppManager.Instance.ExitGame();
+        AppStateManager.Instance.SetHome();
         PausePanel.SetActive(false);
     }
     public void PlatformExtend()
