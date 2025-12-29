@@ -254,7 +254,7 @@ MonoBehaviour:
   SpawnPoint: {fileID: 184733680865422554}
   currentCar: {fileID: 0}
   pendulum: {fileID: 2670727390882814949}
-  forceStrength: 9.4
+  forceStrength: 5
   highestStackY: 0
   craneOffset: 2.5
   craneMoveSpeed: 2
