@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 607693122207144406}
   - component: {fileID: 3132548396052043268}
   - component: {fileID: 3159990582249632373}
+  - component: {fileID: 2747645115255109207}
   m_Layer: 0
   m_Name: Tyre4
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 589221148011222895}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7177572, w: 0.6962935}
-  m_LocalPosition: {x: -0.46, y: -0.404, z: 0.346}
-  m_LocalScale: {x: 0.3313896, y: 0.1549917, z: 0.18954024}
+  m_LocalPosition: {x: -0.405, y: -0.33, z: 0.346}
+  m_LocalScale: {x: 0.4828695, y: 0.1549917, z: 0.17532472}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110160319777239025}
@@ -86,6 +87,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2747645115255109207
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589221148011222895}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2.0000002
+  m_Direction: 1
+  m_Center: {x: -0.000000059604645, y: -0.00000047683716, z: -0.00000008940697}
 --- !u!1 &1930077364753958806
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +121,7 @@ GameObject:
   - component: {fileID: 8742695171659941617}
   - component: {fileID: 4959183383064715832}
   - component: {fileID: 5246528024362142038}
+  - component: {fileID: 4574546649255888860}
   m_Layer: 0
   m_Name: Tyre3
   m_TagString: Untagged
@@ -113,8 +138,8 @@ Transform:
   m_GameObject: {fileID: 1930077364753958806}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5047984, y: -0.49511603, z: -0.5065206, w: -0.4934325}
-  m_LocalPosition: {x: -0.464, y: -0.416, z: -0.367}
-  m_LocalScale: {x: 0.18317561, y: 0.1549917, z: 0.32462555}
+  m_LocalPosition: {x: -0.418, y: -0.35, z: -0.367}
+  m_LocalScale: {x: 0.17630652, y: 0.1549917, z: 0.45450824}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110160319777239025}
@@ -172,6 +197,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &4574546649255888860
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930077364753958806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000003
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: -0.00000017881393, y: -0.00000047683713, z: -0.00000008940698}
 --- !u!1 &2973210783314769672
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +317,7 @@ GameObject:
   - component: {fileID: 1567903989032605845}
   - component: {fileID: 2874908207346135137}
   - component: {fileID: 6593088471724572802}
+  - component: {fileID: 8332310850766678425}
   m_Layer: 0
   m_Name: Tyre2
   m_TagString: Untagged
@@ -285,8 +334,8 @@ Transform:
   m_GameObject: {fileID: 2985690455846280062}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00054773537, y: 0.00052867975, z: -0.69448036, w: 0.71951133}
-  m_LocalPosition: {x: 0.452, y: -0.417, z: -0.368}
-  m_LocalScale: {x: 0.3313896, y: 0.1549917, z: 0.18954024}
+  m_LocalPosition: {x: 0.387, y: -0.37, z: -0.368}
+  m_LocalScale: {x: 0.43501514, y: 0.1549917, z: 0.17058621}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110160319777239025}
@@ -344,6 +393,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8332310850766678425
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985690455846280062}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: -0.00000017881393, y: 0.000000059604645, z: 0.00000014901161}
 --- !u!1 &3822047127385792909
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +447,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1723, y: 0.3559, z: 0}
-  m_LocalScale: {x: 0.46, y: 0.34, z: 0.83}
+  m_LocalScale: {x: 0.46, y: 0.3747969, z: 1.05825}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5881132540792194591}
@@ -510,6 +582,7 @@ GameObject:
   - component: {fileID: 5881132540792194591}
   - component: {fileID: 7946125552724667895}
   - component: {fileID: 4628101894068681728}
+  - component: {fileID: 8083095654927027357}
   m_Layer: 0
   m_Name: Tyre1
   m_TagString: Untagged
@@ -526,8 +599,8 @@ Transform:
   m_GameObject: {fileID: 5033106161115617038}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.69989216, w: 0.71424854}
-  m_LocalPosition: {x: 0.442, y: -0.404, z: 0.346}
-  m_LocalScale: {x: 0.3313896, y: 0.1549917, z: 0.18954024}
+  m_LocalPosition: {x: 0.396, y: -0.32, z: 0.346}
+  m_LocalScale: {x: 0.48883283, y: 0.1549917, z: 0.18006322}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110160319777239025}
@@ -585,3 +658,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8083095654927027357
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5033106161115617038}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 1.9999999
+  m_Direction: 1
+  m_Center: {x: 0.00000005960464, y: 0.00000017881393, z: -0.00000008940697}
