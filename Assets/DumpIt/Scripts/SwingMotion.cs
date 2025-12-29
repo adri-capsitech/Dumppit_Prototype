@@ -6,8 +6,8 @@ public class SwingMotion : MonoBehaviour
 {
     public static SwingMotion Instance { get; private set; }
     [Header("Pendulum Settings")]
-    public float speed = 1.5f;      
-    public float limit = 75f;      
+    public float speed = 1.5f;
+    public float limit = 75f;
     public bool randomStart = false;
     private float randomOffset = 0f;
     public bool swingZ = true;
@@ -50,10 +50,10 @@ public class SwingMotion : MonoBehaviour
         }
         float angle = limit * Mathf.Sin(Time.time * speed + randomOffset);
 
-        if (swingZ == true)
+        if (swingZ == false)
             transform.localRotation = Quaternion.Euler(0f, 0f, angle);
 
-        else if (swingZ == false)
+        else if (swingZ == true)
             transform.localRotation = Quaternion.Euler(angle, 0f, 0f);
 
     }
