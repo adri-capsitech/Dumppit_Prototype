@@ -16,12 +16,17 @@ public class DetectLanding : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasLanded) return;
+        if (hasLanded)
+        {
+            Debug.Log("Already Landed - Ignoring ..");
+            return;
+        }
 
         if (collision.collider.CompareTag("Platform") || collision.collider.CompareTag("Car"))
         {
             hasLanded = true;
-
+            CameraControl.Instance.PlayBump();
+            Debug.Log("Landed on " + collision.collider.name);
             GameMechanics.Instance.SpawnCars();
             DataManager.Instance.UpdateScore();
             int score = DataManager.Instance.GetCurrentScore();
