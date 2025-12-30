@@ -269,8 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1ad1e4f2b61f84db176e1a46f8a465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bumpAmount: 0.25
-  bumpTime: 0.56
+  bumpAmount: 1
+  bumpupTime: 0.27
+  returnBackTime: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
