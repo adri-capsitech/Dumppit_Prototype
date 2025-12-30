@@ -22,6 +22,14 @@ public class GameMechanics : MonoBehaviour
 
     public bool isGameOver = false;
 
+    /*-----------*/
+    [SerializeField] private float heightIncrease = 1.5f;
+    [SerializeField] private float scoreThreshold = 150f;
+
+    private bool heightIncreased = false;
+    private Camera mainCamera;
+
+
 
     private void Awake()
     {
@@ -37,6 +45,7 @@ public class GameMechanics : MonoBehaviour
         isGameOver = false;
         SpawnCars();
         SwingMotion.Instance.stopSwing = false;
+        mainCamera = Camera.main;
     }
     void Update()
     {
@@ -47,6 +56,7 @@ public class GameMechanics : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ReleaseRustic();
+            CheckHeightIncrease();
         }
     }
     public void SpawnCars()
@@ -85,10 +95,7 @@ public class GameMechanics : MonoBehaviour
     //     rb.useGravity = true;
     //     rb.freezeRotation = false;
     //     currentCar.transform.SetParent(null);
-
     //     currentCar = null;
-
-
     //     // // Check which axis has larger swing
     //     // if (Math.Abs(angleZ) > Math.Abs(angleX))
     //     // {
@@ -153,32 +160,46 @@ public class GameMechanics : MonoBehaviour
 
     void ReleaseRustic()
     {
-        if (currentCar == null) return;
-
-        Rigidbody rb = currentCar.GetComponent<Rigidbody>();
-
-
+        if (currentCar == null)
+        {
+            Debug.Log("No car ..");
+            return;
+        }
+        Debug.Log("Releasing Car ..");
+        var rb = currentCar.GetComponent<Rigidbody>();
         currentCar.transform.SetParent(null);
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.freezeRotation = false;
-
-
-        float angle = pendulum.transform.localEulerAngles.x;
-        if (angle > 180f)
-            angle -= 360f;
-
-
-        Vector3 forceDir = angle < 0 ? Vector3.right : Vector3.left;
-
-
-
-        rb.AddForce(forceDir * forceStrength , ForceMode.Impulse);
-        rb.AddForce(Vector3.down * 0.6f, ForceMode.Impulse);
-
         currentCar = null;
     }
 
+
+    void CheckHeightIncrease()
+    {
+        if (heightIncreased)
+            return;
+
+        if (DataManager.Instance.GetCurrentScore() >= scoreThreshold)
+        {
+            heightIncreased = true;
+
+            Vector3 pos = pendulum.transform.position;
+            pendulum.transform.position = new Vector3(
+                pos.x,
+                pos.y + heightIncrease,
+                pos.z
+            );
+
+
+            if (mainCamera.orthographic)
+            {
+                mainCamera.orthographicSize += heightIncrease;
+            }
+
+            Debug.Log("Pendulum & Camera height increased!");
+        }
+    }
 
     public void GameOver()
     {
