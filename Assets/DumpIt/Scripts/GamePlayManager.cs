@@ -37,10 +37,12 @@ public class GamePlayManager : MonoBehaviour
     {
         DataManager.Instance.SaveBestScoreIfNeeded();
         UIManager.Instance.DisplayGameOverPanel();
+
     }
     public void Restart()
     {
         DataManager.Instance.ResetScore();
+        // // Reset pendulum
         GameMechanics.Instance.StartGame();
     }
 

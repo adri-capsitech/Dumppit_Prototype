@@ -10,7 +10,9 @@ public class CameraControl : MonoBehaviour
 
     [Header("Bump Settings")]
     public float bumpAmount = 0.4f;   // how much camera goes down
-    public float bumpTime = 0.08f;     // how fast
+    public float bumpupTime = 0.08f;     // how fast
+
+    public float returnBackTime = 1f;  // how fast it returns
 
     private void Awake()
     {
@@ -28,23 +30,23 @@ public class CameraControl : MonoBehaviour
 
     IEnumerator BumpRoutine()
     {
-        Vector3 downPos = originalPos - new Vector3(0, bumpAmount, 0);
+        Vector3 upPos = originalPos + new Vector3(0, bumpAmount, 0);
 
         // Move down
         float t = 0f;
-        while (t < bumpTime)
+        while (t < bumpupTime)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(originalPos, downPos, t / bumpTime);
+            transform.position = Vector3.Lerp(originalPos, upPos, t / bumpupTime);
             yield return null;
         }
 
         // Move back up
         t = 0f;
-        while (t < bumpTime)
+        while (t < returnBackTime)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(downPos, originalPos, t / bumpTime);
+            transform.position = Vector3.Lerp(upPos, originalPos, t / returnBackTime);
             yield return null;
         }
 
