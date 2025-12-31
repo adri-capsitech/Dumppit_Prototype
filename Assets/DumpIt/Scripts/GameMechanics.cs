@@ -98,6 +98,7 @@ public class GameMechanics : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            if (currentCar == null) return;
             CameraControl.Instance.PlayBump();
             ReleaseRustic();
         }
