@@ -39,7 +39,7 @@ public class AppManager : MonoBehaviour
 
     public void ExitGame()
     {
-
+        GameMechanics.Instance.ResetGameState();
         DestroyGameLogic();
 
     }

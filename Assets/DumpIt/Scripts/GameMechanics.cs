@@ -21,6 +21,7 @@ public class GameMechanics : MonoBehaviour
     public float craneMoveSpeed = 2f;
     public float x, y;
     public bool isGameOver = false;
+    public List<GameObject> totalcars;
 
     /*-----------*/
     [SerializeField] private float heightIncrease = 1.5f;
@@ -143,8 +144,10 @@ public class GameMechanics : MonoBehaviour
 
     void ReleaseRustic()
     {
+
         if (currentCar == null) return;
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
+        totalcars.Add(currentCar);
 
         rb.isKinematic = false;
         rb.useGravity = true;
@@ -193,6 +196,7 @@ public class GameMechanics : MonoBehaviour
             Time.timeScale = 0;
             Debug.Log("Game Over");
             ResetGameState();
+            // Destroy(r.gameObject);
             GamePlayManager.Instance.GameOver();
         }
     }
@@ -219,6 +223,7 @@ public class GameMechanics : MonoBehaviour
         {
             Destroy(r.gameObject);
         }
+
     }
 
 }
