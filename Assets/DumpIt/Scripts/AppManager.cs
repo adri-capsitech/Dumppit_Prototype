@@ -7,7 +7,7 @@ public class AppManager : MonoBehaviour
     [SerializeField]
     private GameObject HomeScreen;
 
-    private GameObject GameLogic;
+    public GameObject GameLogic;
 
 
     private void Awake()
@@ -39,7 +39,7 @@ public class AppManager : MonoBehaviour
 
     public void ExitGame()
     {
-        GameMechanics.Instance.ResetGameState();
+        // GameMechanics.Instance.ResetGameState();
         DestroyGameLogic();
 
     }

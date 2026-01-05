@@ -44,6 +44,7 @@ public class GameOverUi : MonoBehaviour
         // GamePlayManager.Instance.EndGame();
 
         // // Go to home screen - overlays will be hidden automatically after this frame
+        // GameMechanics.Instance.ResetGameState();
         AppManager.Instance.ExitGame();
         AppStateManager.Instance.SetHome();
         // AppStateManager.Instance.HideOverlay("FinalScorePopUp");

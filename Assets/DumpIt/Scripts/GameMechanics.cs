@@ -113,7 +113,7 @@ public class GameMechanics : MonoBehaviour
 
         Debug.Log("Spawning Car ..");
         int index = UnityEngine.Random.Range(0, Cars.Count);
-        currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation);
+        currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation,AppManager.Instance.GameLogic.transform);
         //  currentCar.transform.SetParent(SpawnPoint.transform);
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -203,8 +203,9 @@ public class GameMechanics : MonoBehaviour
     }
     public void ResetGameState()
     {
-        PlatformExtender.Instance.ResetPlatform();
-
+        if(PlatformExtender.Instance != null){
+            PlatformExtender.Instance.ResetPlatform();
+        }
       
         // Reset pendulum
         pendulum.transform.position = pendulumStartPos;
