@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2979472130665588007}
   - component: {fileID: 8670375373135169054}
   m_Layer: 0
-  m_Name: magnet
+  m_Name: megnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
