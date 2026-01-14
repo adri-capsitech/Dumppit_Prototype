@@ -4,9 +4,11 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public static CameraControl Instance;
-
-    private Vector3 originalPos;
     private Coroutine bumpRoutine;
+    private Vector3 defaultPos;
+    private Quaternion defaultRot;
+    private Vector3 currentBasePos;
+    private Quaternion currentBaseRot;
 
     [Header("Bump Settings")]
     public float bumpAmount = 0.4f;   // how much camera goes down
@@ -14,10 +16,19 @@ public class CameraControl : MonoBehaviour
 
     public float returnBackTime = 1f;  // how fast it returns
 
+    [Header("Z Axis Camera Pose")]
+    private Vector3 zAxisPos = new Vector3(7.7f, 6.04f, -5.113862f);
+    private Vector3 zAxisRot = new Vector3(22.173f, -50.35f, 0f);
+
+    [Header("Camera Smooth Settings")]
+    public float cameraMoveSpeed = 1f;
+
+    private Coroutine cameraMoveRoutine;
+
+
     private void Awake()
     {
         Instance = this;
-        originalPos = transform.position;
     }
 
     public void PlayBump()
@@ -28,16 +39,26 @@ public class CameraControl : MonoBehaviour
         bumpRoutine = StartCoroutine(BumpRoutine());
     }
 
+    void Start()
+    {
+        defaultPos = transform.position;
+        defaultRot = transform.rotation;
+
+        currentBasePos = defaultPos;
+        currentBaseRot = defaultRot;
+
+    }
+
     IEnumerator BumpRoutine()
     {
-        Vector3 upPos = originalPos + new Vector3(0, bumpAmount, 0);
+        Vector3 upPos = currentBasePos + new Vector3(0, bumpAmount, 0);
 
         // Move down
         float t = 0f;
         while (t < bumpupTime)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(originalPos, upPos, t / bumpupTime);
+            transform.position = Vector3.Lerp(currentBasePos, upPos, t / bumpupTime);
             yield return null;
         }
 
@@ -46,10 +67,57 @@ public class CameraControl : MonoBehaviour
         while (t < returnBackTime)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(upPos, originalPos, t / returnBackTime);
+            transform.position = Vector3.Lerp(upPos, currentBasePos, t / returnBackTime);
             yield return null;
         }
 
-        transform.position = originalPos;
+        transform.position = currentBasePos;
     }
+
+    void StartCameraMove(Vector3 pos, Quaternion rot)
+    {
+        if (cameraMoveRoutine != null)
+            StopCoroutine(cameraMoveRoutine);
+
+        cameraMoveRoutine = StartCoroutine(SmoothMoveCamera(pos, rot));
+    }
+
+
+    IEnumerator SmoothMoveCamera(Vector3 targetPos, Quaternion targetRot)
+    {
+        Vector3 startPos = transform.position;
+        Quaternion startRot = transform.rotation;
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * cameraMoveSpeed;
+
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+
+            yield return null;
+        }
+
+        transform.position = targetPos;
+        transform.rotation = targetRot;
+    }
+
+    public void SwitchToDefaultCamera()
+    {
+        currentBasePos = defaultPos;
+        currentBaseRot = defaultRot;
+
+        StartCameraMove(currentBasePos, currentBaseRot);
+    }
+
+    public void SwitchToZAxisCamera()
+    {
+        currentBasePos = zAxisPos;
+        currentBaseRot = Quaternion.Euler(zAxisRot);
+
+        StartCameraMove(currentBasePos, currentBaseRot);
+    }
+
+
 }
