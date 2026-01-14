@@ -139,25 +139,42 @@ public class UIManager : MonoBehaviour
     public void LeftExtent()
     {
         if (PlatformExtender.Instance == null) return;
-        TryExtend(() => PlatformExtender.Instance.ExtendLeft());
+
+        else if (SwingMotion.Instance.swingZ == true)
+            TryExtend(() => PlatformExtender.Instance.ExtendBack());
+        else
+            TryExtend(() => PlatformExtender.Instance.ExtendLeft());
     }
 
     public void RightExtent()
     {
         if (PlatformExtender.Instance == null) return;
+
+        else if (SwingMotion.Instance.swingZ == true)
+            TryExtend(() => PlatformExtender.Instance.ExtendForward());
+
         TryExtend(() => PlatformExtender.Instance.ExtendRight());
     }
-
+  
     public void TopExtent()
     {
         if (PlatformExtender.Instance == null) return;
-        TryExtend(() => PlatformExtender.Instance.ExtendForward());
+
+        else if (SwingMotion.Instance.swingZ == true)
+            TryExtend(() => PlatformExtender.Instance.ExtendRight());
+        else
+            TryExtend(() => PlatformExtender.Instance.ExtendForward());
     }
 
     public void BottomExtent()
     {
         if (PlatformExtender.Instance == null) return;
-        TryExtend(() => PlatformExtender.Instance.ExtendBack());
+
+        else if (SwingMotion.Instance.swingZ == true)
+
+            TryExtend(() => PlatformExtender.Instance.ExtendLeft());
+        else
+            TryExtend(() => PlatformExtender.Instance.ExtendBack());
     }
 
     #endregion
