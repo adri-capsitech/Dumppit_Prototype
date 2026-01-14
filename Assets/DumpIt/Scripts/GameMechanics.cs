@@ -197,6 +197,7 @@ public class GameMechanics : MonoBehaviour
             Time.timeScale = 0;
             Debug.Log("Game Over");
             ResetGameState();
+            CameraControl.Instance.SwitchToDefaultCamera();
             // Destroy(r.gameObject);
             GamePlayManager.Instance.GameOver();
         }

@@ -10,10 +10,12 @@ public class SwingMotion : MonoBehaviour
     public float limit = 75f;
     public bool randomStart = false;
     private float randomOffset = 0f;
-    public bool swingZ = true;
+    public bool swingZ = false;
     public bool stopSwing = false;
     private Vector3 initialLocalPosition;
     private Quaternion initialLocalRotation;
+    private bool zCameraApplied = false;
+
 
     void Awake()
     {
@@ -50,11 +52,29 @@ public class SwingMotion : MonoBehaviour
         }
         float angle = limit * Mathf.Sin(Time.time * speed + randomOffset);
 
-        if (swingZ == false)
-            transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+        if (swingZ == true)
+        {
+            transform.localRotation = initialLocalRotation * Quaternion.Euler(0f, 0f, angle);
+            Debug.Log("Swinging in Z axis" + angle);
 
-        else if (swingZ == true)
-            transform.localRotation = Quaternion.Euler(angle, 0f, 0f);
+            if (!zCameraApplied)
+            {
+                CameraControl.Instance.SwitchToZAxisCamera();
+                zCameraApplied = true;
+            }
+        }
+
+        else
+        {
+            transform.localRotation = initialLocalRotation * Quaternion.Euler(angle, 0f, 0f);
+            Debug.Log("Swinging in X axis" + angle);
+
+            if (zCameraApplied)
+            {
+                CameraControl.Instance.SwitchToDefaultCamera();
+                zCameraApplied = false;
+            }
+        }
 
     }
 }
