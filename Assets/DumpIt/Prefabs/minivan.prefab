@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 9080788877302670032}
   - component: {fileID: 7046284520671819694}
   - component: {fileID: 405389280700395041}
-  - component: {fileID: 969890492100886276}
   - component: {fileID: 598089202597406008}
   - component: {fileID: 2375513321675506754}
+  - component: {fileID: 3726154755563124165}
   m_Layer: 0
   m_Name: minivan
   m_TagString: Untagged
@@ -98,27 +98,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &969890492100886276
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272951432913606576}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &598089202597406008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,3 +138,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasLanded: 0
+--- !u!64 &3726154755563124165
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272951432913606576}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8902582675192366378, guid: 0f58e88f601c6bc4f9965275d5a99e99, type: 3}
