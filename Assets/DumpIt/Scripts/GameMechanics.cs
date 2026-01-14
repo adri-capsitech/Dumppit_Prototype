@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 
 public class GameMechanics : MonoBehaviour
 {
+    public float car1Offset = 0f;
+    public float car2Offset = 0;
     public static GameMechanics Instance { get; private set; }
 
     public List<GameObject> Cars;
@@ -113,6 +115,16 @@ public class GameMechanics : MonoBehaviour
 
         Debug.Log("Spawning Car ..");
         int index = UnityEngine.Random.Range(0, Cars.Count);
+        //if index = 0 add position y 0.5
+        if (index == 0)
+        {
+            SpawnPoint.transform.position = new Vector3(SpawnPoint.transform.position.x, SpawnPoint.transform.position.y + car1Offset, SpawnPoint.transform.position.z);
+        }
+        else if(index == 1)
+        {
+            SpawnPoint.transform.position = new Vector3(SpawnPoint.transform.position.x, SpawnPoint.transform.position.y + car2Offset, SpawnPoint.transform.position.z);
+        }
+
         currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation,AppManager.Instance.GameLogic.transform);
         //  currentCar.transform.SetParent(SpawnPoint.transform);
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();

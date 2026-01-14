@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "DumpIt_Prototype.slnx"
+    "dotnet.defaultSolution": "Dumppit_Prototype.slnx"
 }
