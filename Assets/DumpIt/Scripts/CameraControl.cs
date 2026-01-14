@@ -17,7 +17,7 @@ public class CameraControl : MonoBehaviour
     public float returnBackTime = 1f;  // how fast it returns
 
     [Header("Z Axis Camera Pose")]
-    private Vector3 zAxisPos = new Vector3(7.7f, 6.04f, -5.113862f);
+    private Vector3 zAxisPos = new Vector3(10f, 7.5f, -8.5f);
     private Vector3 zAxisRot = new Vector3(22.173f, -50.35f, 0f);
 
     [Header("Camera Smooth Settings")]
