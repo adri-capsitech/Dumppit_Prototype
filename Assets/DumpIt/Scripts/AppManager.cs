@@ -21,13 +21,13 @@ public class AppManager : MonoBehaviour
     void Start()
     {
         AppStateManager.Instance.SetHome();
+        Application.targetFrameRate = 120;
         //  AppStateManager.Instance.SetGameplay();
         //this.StartGame();
     }
 
-    public void StartGame()
+       public void StartGame()
     {
-
         AppStateManager.Instance.SetGameplay();
         if (GameLogic == null)
         {

@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Constraints;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -109,9 +107,6 @@ public class GameMechanics : MonoBehaviour
             CameraControl.Instance.PlayBump();
             ReleaseRustic();
         }
-
-
-
     }
     public void SpawnCars()
     {
@@ -141,6 +136,8 @@ public class GameMechanics : MonoBehaviour
         {
             landing.hasLanded = false;
         }
+
+        Debug.Log("Current Car after Spawning:" + currentCar);
     }
 
     // void ReleaseRustic()
@@ -165,9 +162,8 @@ public class GameMechanics : MonoBehaviour
 
         if (currentCar == null) return;
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
-        totalcars.Add(currentCar);
 
-        rb.isKinematic = false;
+        rb.isKinematic = false; 
         rb.useGravity = true;
         rb.freezeRotation = false;
 
@@ -188,9 +184,9 @@ public class GameMechanics : MonoBehaviour
 
         rb.AddForce(forceDir * forceStrength, ForceMode.Impulse);
         // rb.AddForce(Vector3.down * 1.5f, ForceMode.Impulse);
-        Debug.Log("------------>After release velocity: " + rb.linearVelocity);
 
         currentCar = null;
+        Debug.Log("Current Car after release:" + currentCar);
     }
 
     public void AdjustHeight()
