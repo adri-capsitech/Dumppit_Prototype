@@ -6,7 +6,6 @@ public class SpawnCollider : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            Debug.Log("Spawn Collider hit by " + other.name);
             GameMechanics.Instance.SpawnCars();
             GameMechanics.Instance.AdjustHeight();
         }

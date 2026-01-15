@@ -18,7 +18,6 @@ public class DetectLanding : MonoBehaviour
     {
         if (hasLanded)
         {
-            Debug.Log("Already Landed - Ignoring ..");
             return;
         }
 
@@ -26,7 +25,6 @@ public class DetectLanding : MonoBehaviour
         {
             hasLanded = true;
          
-            Debug.Log("Landed on " + collision.collider.name);
             GameMechanics.Instance.SpawnCars();
             DataManager.Instance.UpdateScore();
             int score = DataManager.Instance.GetCurrentScore();

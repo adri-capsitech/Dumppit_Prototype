@@ -350,6 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c260c2d77ca810429c1e2e462801616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  car1Offset: 0.4
+  car2Offset: 0.35
   Cars:
   - {fileID: 5082644707094166953, guid: 525f15f91471b01408c17c175a58af2d, type: 3}
   - {fileID: 1137754113795024189, guid: 658cc69895097b44d996e81fa0c64fb8, type: 3}

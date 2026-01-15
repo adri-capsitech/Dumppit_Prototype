@@ -10,6 +10,8 @@ public class GameMechanics : MonoBehaviour
 {
     public float car1Offset = 0f;
     public float car2Offset = 0;
+    private Vector3 spawnPointStartPos;
+
     public static GameMechanics Instance { get; private set; }
 
     public List<GameObject> Cars;
@@ -52,6 +54,8 @@ public class GameMechanics : MonoBehaviour
         // Save pendulum defaults
         pendulumStartPos = pendulum.transform.position;
         pendulumStartRot = pendulum.transform.rotation;
+
+        spawnPointStartPos = SpawnPoint.transform.localPosition;
     }
     public void StartGame()
     {
@@ -115,17 +119,18 @@ public class GameMechanics : MonoBehaviour
 
         Debug.Log("Spawning Car ..");
         int index = UnityEngine.Random.Range(0, Cars.Count);
-        //if index = 0 add position y 0.5
+        SpawnPoint.transform.localPosition = spawnPointStartPos;
+
         if (index == 0)
         {
-            SpawnPoint.transform.position = new Vector3(SpawnPoint.transform.position.x, SpawnPoint.transform.position.y + car1Offset, SpawnPoint.transform.position.z);
+            SpawnPoint.transform.localPosition += Vector3.up * car1Offset;
         }
-        else if(index == 1)
+        else if (index == 2)
         {
-            SpawnPoint.transform.position = new Vector3(SpawnPoint.transform.position.x, SpawnPoint.transform.position.y + car2Offset, SpawnPoint.transform.position.z);
+            SpawnPoint.transform.localPosition += Vector3.down * car2Offset;
         }
 
-        currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation,AppManager.Instance.GameLogic.transform);
+        currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation, AppManager.Instance.GameLogic.transform);
         //  currentCar.transform.SetParent(SpawnPoint.transform);
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -216,10 +221,11 @@ public class GameMechanics : MonoBehaviour
     }
     public void ResetGameState()
     {
-        if(PlatformExtender.Instance != null){
+        if (PlatformExtender.Instance != null)
+        {
             PlatformExtender.Instance.ResetPlatform();
         }
-      
+
         // Reset pendulum
         pendulum.transform.position = pendulumStartPos;
         pendulum.transform.rotation = pendulumStartRot;
