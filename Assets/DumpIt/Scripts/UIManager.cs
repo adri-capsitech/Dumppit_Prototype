@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
 
         PlatformExtender.Instance.ResetPlatform();
         GamePlayManager.Instance.Restart();
+        CameraControl.Instance.SwitchToDefaultCamera();
         DataManager.Instance.ResetScore();
     }
 
@@ -155,7 +156,7 @@ public class UIManager : MonoBehaviour
 
         TryExtend(() => PlatformExtender.Instance.ExtendRight());
     }
-  
+
     public void TopExtent()
     {
         if (PlatformExtender.Instance == null) return;

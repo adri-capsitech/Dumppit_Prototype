@@ -43,7 +43,6 @@ public class GamePlayManager : MonoBehaviour
     {
         DataManager.Instance.ResetScore();
         // // Reset pendulum
-        CameraControl.Instance.SwitchToDefaultCamera();
         GameMechanics.Instance.StartGame();
 
     }
