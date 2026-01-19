@@ -24,9 +24,9 @@ public class DetectLanding : MonoBehaviour
         if (collision.collider.CompareTag("Platform") || collision.collider.CompareTag("Car"))
         {
             hasLanded = true;
-         
+
             GameMechanics.Instance.SpawnCars();
-            DataManager.Instance.UpdateScore();
+            GameMechanics.Instance.UpdateScore();
             int score = DataManager.Instance.GetCurrentScore();
             Debug.Log("Score is - " + score);
         }

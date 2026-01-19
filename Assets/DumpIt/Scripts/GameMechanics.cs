@@ -85,7 +85,6 @@ public class GameMechanics : MonoBehaviour
     {
         float currentAngle = pendulum.transform.localEulerAngles.x;
 
-
         if (currentAngle > 180f)
             currentAngle -= 360f;
 
@@ -163,7 +162,7 @@ public class GameMechanics : MonoBehaviour
         if (currentCar == null) return;
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
 
-        rb.isKinematic = false; 
+        rb.isKinematic = false;
         rb.useGravity = true;
         rb.freezeRotation = false;
 
@@ -178,7 +177,6 @@ public class GameMechanics : MonoBehaviour
         }
         else
         {
-
             forceDir = Vector3.left;
         }
 
@@ -202,6 +200,12 @@ public class GameMechanics : MonoBehaviour
         Debug.Log("Pendulum & Camera height increased!");
     }
 
+    public void UpdateScore()
+    {
+        if (DataManager.Instance) DataManager.Instance.UpdateScore();
+        if (DataManager.Instance.HasHighScore()) ShowCelebrationEffect();
+    }
+
     public void GameOver()
     {
         if (isGameOver == true)
@@ -214,6 +218,25 @@ public class GameMechanics : MonoBehaviour
             // Destroy(r.gameObject);
             GamePlayManager.Instance.GameOver();
         }
+    }
+    private void ShowCelebrationEffect()
+    {
+
+
+        AppStateManager.Instance.ShowOverlay("HighScorePopUp");
+        Debug.Log("-> New High Score Reached DURING GAMEPLAY");
+        // if (celebrationEffect != null)
+        // {
+        //     var celebration = Instantiate(celebrationEffect, Camera.main.transform, false);
+        //     celebration.transform.position = Vector3.up;
+        //     celebration.Play();
+        //     AppStateManager.Instance.ShowOverlay("NewHighScore");
+        //     DOTween.Sequence().AppendInterval(2f).AppendCallback(() =>
+        //     {
+        //         celebration.Stop();
+        //         Destroy(celebration.gameObject);
+        //     });
+
     }
     public void ResetGameState()
     {

@@ -64,15 +64,26 @@ public class DataManager : MonoBehaviour
 
     public void UpdateScore()
     {
+        highScoreAchieved = false;
         Score += 10;
         PlayerPrefs.SetInt(SCORE_KEY, Score);
         PlayerPrefs.Save();
         FinalScore = Score;
         Debug.Log("The final score is " + FinalScore);
 
+        int bestScore = GetBestScore();
         OnScoreUpdated?.Invoke(FinalScore);
 
         CheckCoinReward();
+        if (FinalScore > bestScore && !PlayerPrefs.HasKey(DYNAMIC_HIGH_SCORE_KEY))
+        {
+            PlayerPrefs.SetInt(DYNAMIC_HIGH_SCORE_KEY, FinalScore);
+            OnNewBestScore?.Invoke(FinalScore);
+            //  Debug.Log("-> New High Score Reached DURING GAMEPLAY");
+            // if (FinalScore != 1)
+            highScoreAchieved = true;
+
+        }
         SaveBestScoreIfNeeded();
     }
     private void CheckCoinReward()
@@ -107,6 +118,7 @@ public class DataManager : MonoBehaviour
     public void ResetScore()
     {
         PlayerPrefs.SetInt(SCORE_KEY, 0);
+        PlayerPrefs.DeleteKey(DYNAMIC_HIGH_SCORE_KEY);
         PlayerPrefs.Save();
         Score = 0;
         OnScoreUpdated?.Invoke(Score);
