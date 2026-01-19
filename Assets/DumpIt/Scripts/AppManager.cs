@@ -21,7 +21,7 @@ public class AppManager : MonoBehaviour
     void Start()
     {
         AppStateManager.Instance.SetHome();
-        Application.targetFrameRate = 120;
+    //    Application.targetFrameRate = 120;
         //  AppStateManager.Instance.SetGameplay();
         //this.StartGame();
     }
