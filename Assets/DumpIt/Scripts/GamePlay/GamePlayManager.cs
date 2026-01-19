@@ -36,7 +36,7 @@ public class GamePlayManager : MonoBehaviour
     public void GameOver()
     {
         DataManager.Instance.SaveBestScoreIfNeeded();
-        UIManager.Instance.DisplayGameOverPanel();
+        GameUIManager.Instance.DisplayGameOverPanel();
 
     }
     public void Restart()
