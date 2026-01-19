@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class GameUIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; }
+    public static GameUIManager Instance { get; private set; }
 
     [Header("Buttons")]
     public Button Pausebtn;
@@ -27,9 +27,13 @@ public class UIManager : MonoBehaviour
     [Header("UI Text")]
     public TMP_Text Score;
     public TMP_Text Coin;
+    public TMPro.TMP_Text TapText;
 
     private const int PLATFORM_COST = 20;
     private const int SWING_COST = 30;
+
+    public float idleTime = 10f;
+    [SerializeField] private float IdleCounter = 0;
 
     private void Awake()
     {
@@ -72,6 +76,31 @@ public class UIManager : MonoBehaviour
         CheckPowerUps();
     }
 
+    private void Update()
+    {
+        if (GamePlayManager.Instance == null) return;
+        if (GameMechanics.Instance == null) return;
+        if (IdleCounter == idleTime && GameMechanics.Instance.isIdle) return;
+
+        if (GameMechanics.Instance.isIdle)
+        {
+            IdleCounter += Time.deltaTime;
+
+            if (IdleCounter >= idleTime)
+            {
+                IdleCounter = idleTime;
+                TapText.gameObject.SetActive(true);
+                return;
+            }
+        }
+        else
+        {
+            TapText.gameObject.SetActive(false);
+            GameMechanics.Instance.isIdle = true;
+            IdleCounter = 0;
+        }
+    }
+    
     #region Pause / Game Controls
 
     public void TogglePause()

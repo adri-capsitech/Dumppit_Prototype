@@ -36,6 +36,7 @@ public class GameMechanics : MonoBehaviour
     int swingDirection = 0; // +1 = right, -1 = left
 
     public Camera mainCamera;
+    public bool isIdle = true;
 
     private void Awake()
     {
@@ -105,6 +106,7 @@ public class GameMechanics : MonoBehaviour
             if (currentCar == null) return;
             CameraControl.Instance.PlayBump();
             ReleaseRustic();
+            isIdle = false;
         }
     }
     public void SpawnCars()

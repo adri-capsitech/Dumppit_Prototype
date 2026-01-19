@@ -55,7 +55,7 @@ public class GameOverUi : MonoBehaviour
         Debug.Log("Retry Button Clicked");
         AppStateManager.Instance.SetGameplay();
         AppManager.Instance.RestartGame();
-        UIManager.Instance.RestartGame();
+        GameUIManager.Instance.RestartGame();
     }
 
     // public void UpdateScore(int score)
