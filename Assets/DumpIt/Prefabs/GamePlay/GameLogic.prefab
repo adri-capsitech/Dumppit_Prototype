@@ -139,8 +139,8 @@ Transform:
   m_GameObject: {fileID: 2526920748474857740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.7, z: 0}
-  m_LocalScale: {x: 250.6, y: 250.6, z: 250.6}
+  m_LocalPosition: {x: 0, y: 9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 877757757122018734}
@@ -152,7 +152,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2526920748474857740}
-  m_Mesh: {fileID: 2724441626710678972, guid: a326f4e18e427184da4772365efae048, type: 3}
+  m_Mesh: {fileID: 3840146784067909648, guid: 904ae4817140a854d874f5b61c96b7e1, type: 3}
 --- !u!23 &4040170286967412953
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -353,9 +353,10 @@ MonoBehaviour:
   car1Offset: 0.4
   car2Offset: 0.35
   Cars:
-  - {fileID: 5082644707094166953, guid: 525f15f91471b01408c17c175a58af2d, type: 3}
-  - {fileID: 1137754113795024189, guid: 658cc69895097b44d996e81fa0c64fb8, type: 3}
-  - {fileID: 272951432913606576, guid: 0cc63755ad3fbc8409caa9a5a56bb14c, type: 3}
+  - {fileID: 3162612975808522223, guid: 8c9cdb7b60714554b9590eac94fa12a1, type: 3}
+  - {fileID: 854949523866189721, guid: e2f12975ea2fa53498e6bc8b21355d75, type: 3}
+  - {fileID: 5627622201267516204, guid: d22cef4353d8dc9429cf15b0b1ab9a1e, type: 3}
+  - {fileID: 592288081823104346, guid: 3f899e006e8a8cf4b8dc47498e2dd72b, type: 3}
   SpawnPoint: {fileID: 184733680865422554}
   currentCar: {fileID: 0}
   pendulum: {fileID: 2670727390882814949}
@@ -372,6 +373,7 @@ MonoBehaviour:
   pendulumStartPos: {x: 0, y: 0, z: 0}
   cameraStartSize: 0
   mainCamera: {fileID: 0}
+  isIdle: 1
 --- !u!1 &3298099034798791226
 GameObject:
   m_ObjectHideFlags: 0

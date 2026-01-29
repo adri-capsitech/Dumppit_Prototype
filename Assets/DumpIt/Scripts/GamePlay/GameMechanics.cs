@@ -10,6 +10,8 @@ public class GameMechanics : MonoBehaviour
     public float car2Offset = 0;
     private Vector3 spawnPointStartPos;
 
+
+
     public static GameMechanics Instance { get; private set; }
 
     public List<GameObject> Cars;
@@ -132,6 +134,8 @@ public class GameMechanics : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = false;
 
+
+
         DetectLanding landing = currentCar.GetComponent<DetectLanding>();
         if (landing != null)
         {
@@ -163,6 +167,18 @@ public class GameMechanics : MonoBehaviour
 
         if (currentCar == null) return;
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
+
+        RopeController ropeController = currentCar.GetComponentInChildren<RopeController>();
+
+        if (ropeController != null)
+        {
+            ropeController.DisableRope();
+        }
+        else
+        {
+            Debug.LogWarning("RopeController not found on currentCar!");
+        }
+
 
         rb.isKinematic = false;
         rb.useGravity = true;
