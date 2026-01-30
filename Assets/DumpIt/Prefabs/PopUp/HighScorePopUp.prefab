@@ -228,6 +228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PopupAnimationController
   rectPanel: {fileID: 2742724017680945635}
   popupName: HighScorePopUp
-  popupText: You've Set a New Record!
+  popupText: NEW RECORD!!
   waitTime: 2
   popupTextUI: {fileID: 6739559958936709478}
