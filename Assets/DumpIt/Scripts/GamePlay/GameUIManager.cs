@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+
 
 public class GameUIManager : MonoBehaviour
 {
@@ -28,12 +30,15 @@ public class GameUIManager : MonoBehaviour
     public TMP_Text Score;
     public TMP_Text Coin;
     public TMPro.TMP_Text TapText;
+    public float tapTextStartDuration = 2f;
 
     private const int PLATFORM_COST = 20;
     private const int SWING_COST = 30;
 
     public float idleTime = 10f;
     [SerializeField] private float IdleCounter = 0;
+
+
 
     private void Awake()
     {
@@ -74,7 +79,16 @@ public class GameUIManager : MonoBehaviour
         }
 
         CheckPowerUps();
+
+        TapText.gameObject.SetActive(true);
+        StartCoroutine(HideTapTextAfterDelay());
     }
+    private IEnumerator HideTapTextAfterDelay()
+    {
+        yield return new WaitForSeconds(tapTextStartDuration);
+        TapText.gameObject.SetActive(false);
+    }
+
 
     private void Update()
     {
@@ -100,7 +114,7 @@ public class GameUIManager : MonoBehaviour
             IdleCounter = 0;
         }
     }
-    
+
     #region Pause / Game Controls
 
     public void TogglePause()
