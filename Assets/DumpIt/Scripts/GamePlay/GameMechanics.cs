@@ -8,12 +8,7 @@ public class GameMechanics : MonoBehaviour
 {
     public float car1Offset = 0f;
     public float car2Offset = 0;
-    private Vector3 spawnPointStartPos;
-
-
-
     public static GameMechanics Instance { get; private set; }
-
     public List<GameObject> Cars;
     public GameObject SpawnPoint;
     public GameObject currentCar;
@@ -56,7 +51,7 @@ public class GameMechanics : MonoBehaviour
         pendulumStartPos = pendulum.transform.position;
         pendulumStartRot = pendulum.transform.rotation;
 
-        spawnPointStartPos = SpawnPoint.transform.localPosition;
+       // spawnPointStartPos = SpawnPoint.transform.localPosition;
     }
     public void StartGame()
     {
@@ -117,16 +112,16 @@ public class GameMechanics : MonoBehaviour
 
         Debug.Log("Spawning Car ..");
         int index = UnityEngine.Random.Range(0, Cars.Count);
-        SpawnPoint.transform.localPosition = spawnPointStartPos;
+      //  SpawnPoint.transform.localPosition = spawnPointStartPos;
 
-        if (index == 0)
-        {
-            SpawnPoint.transform.localPosition += Vector3.up * car1Offset;
-        }
-        else if (index == 2)
-        {
-            SpawnPoint.transform.localPosition += Vector3.down * car2Offset;
-        }
+        // if (index == 0)
+        // {
+        //     SpawnPoint.transform.localPosition += Vector3.up * car1Offset;
+        // }
+        // else if (index == 2)
+        // {
+        //     SpawnPoint.transform.localPosition += Vector3.down * car2Offset;
+        // }
 
         currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation, AppManager.Instance.GameLogic.transform);
         //  currentCar.transform.SetParent(SpawnPoint.transform);
@@ -179,26 +174,25 @@ public class GameMechanics : MonoBehaviour
             Debug.LogWarning("RopeController not found on currentCar!");
         }
 
-
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.freezeRotation = false;
 
         Debug.Log("------------->Before release velocity: " + rb.linearVelocity);
 
-        Vector3 forceDir;
+       // Vector3 forceDir;
 
-        if (swingDirection == 1)
-        {
+        // if (swingDirection == 1)
+        // {
 
-            forceDir = Vector3.right;
-        }
-        else
-        {
-            forceDir = Vector3.left;
-        }
+        //     forceDir = Vector3.right;
+        // }
+        // else
+        // {
+        //     forceDir = Vector3.left;
+        // }
 
-        rb.AddForce(forceDir * forceStrength, ForceMode.Impulse);
+       // rb.AddForce(forceDir * forceStrength, ForceMode.Impulse);
         // rb.AddForce(Vector3.down * 1.5f, ForceMode.Impulse);
 
         currentCar = null;
