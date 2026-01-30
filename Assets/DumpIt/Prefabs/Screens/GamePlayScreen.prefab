@@ -2868,6 +2868,7 @@ MonoBehaviour:
   crossbtn: {fileID: 3760333317656966342}
   PausePanel: {fileID: 2409441561541293082}
   PlatformExtendPanel: {fileID: 680439185322348732}
+  PauseImage: {fileID: 3961989858364033164}
   Score: {fileID: 2065178277769355937}
   Coin: {fileID: 8079637212430872484}
   TapText: {fileID: 5081256890777161550}

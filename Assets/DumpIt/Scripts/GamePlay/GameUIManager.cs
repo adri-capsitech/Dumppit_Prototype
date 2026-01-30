@@ -26,6 +26,7 @@ public class GameUIManager : MonoBehaviour
     public GameObject PausePanel;
     public GameObject PlatformExtendPanel;
 
+
     [Header("UI Text")]
     public TMP_Text Score;
     public TMP_Text Coin;
@@ -121,17 +122,22 @@ public class GameUIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         PausePanel.SetActive(true);
+        transform.parent.GetComponent<Image>().enabled = true;
+
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
         PausePanel.SetActive(false);
+        transform.parent.GetComponent<Image>().enabled = false;
+
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1;
+        transform.parent.GetComponent<Image>().enabled = false;
         PausePanel.SetActive(false);
 
         PlatformExtender.Instance.ResetPlatform();
