@@ -2618,7 +2618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap to drop the cars !
+  m_text: Tap to drop the Blocks !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc8d754152d1824abfeefb699d02bdd, type: 2}
   m_sharedMaterial: {fileID: -9062451916185538510, guid: 2cc8d754152d1824abfeefb699d02bdd, type: 2}
@@ -2868,7 +2868,6 @@ MonoBehaviour:
   crossbtn: {fileID: 3760333317656966342}
   PausePanel: {fileID: 2409441561541293082}
   PlatformExtendPanel: {fileID: 680439185322348732}
-  PauseImage: {fileID: 3961989858364033164}
   Score: {fileID: 2065178277769355937}
   Coin: {fileID: 8079637212430872484}
   TapText: {fileID: 5081256890777161550}
