@@ -211,7 +211,7 @@ public class GameUIManager : MonoBehaviour
         if (PlatformExtender.Instance == null) return;
 
         else if (SwingMotion.Instance.swingZ == true)
-            TryExtend(() => PlatformExtender.Instance.ExtendRight());
+            TryExtend(() => PlatformExtender.Instance.ExtendLeft());
         else
             TryExtend(() => PlatformExtender.Instance.ExtendForward());
     }
@@ -222,7 +222,7 @@ public class GameUIManager : MonoBehaviour
 
         else if (SwingMotion.Instance.swingZ == true)
 
-            TryExtend(() => PlatformExtender.Instance.ExtendLeft());
+            TryExtend(() => PlatformExtender.Instance.ExtendRight());
         else
             TryExtend(() => PlatformExtender.Instance.ExtendBack());
     }
