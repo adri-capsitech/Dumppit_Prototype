@@ -54,7 +54,7 @@ public class SwingMotion : MonoBehaviour
 
         if (swingZ == true)
         {
-            transform.localRotation = initialLocalRotation * Quaternion.Euler(angle, 0f, 0f);
+            transform.localRotation = initialLocalRotation * Quaternion.Euler(0f, 0f, angle);
 
             if (!zCameraApplied)
             {
