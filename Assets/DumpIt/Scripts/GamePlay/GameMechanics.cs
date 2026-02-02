@@ -51,7 +51,7 @@ public class GameMechanics : MonoBehaviour
         pendulumStartPos = pendulum.transform.position;
         pendulumStartRot = pendulum.transform.rotation;
 
-       // spawnPointStartPos = SpawnPoint.transform.localPosition;
+        // spawnPointStartPos = SpawnPoint.transform.localPosition;
     }
     public void StartGame()
     {
@@ -111,8 +111,12 @@ public class GameMechanics : MonoBehaviour
         if (currentCar != null) return;
 
         Debug.Log("Spawning Car ..");
+        SpawnCollider spawnCollider = FindFirstObjectByType<SpawnCollider>();
+        if (spawnCollider != null)
+            spawnCollider.ResetTrigger();
+
         int index = UnityEngine.Random.Range(0, Cars.Count);
-      //  SpawnPoint.transform.localPosition = spawnPointStartPos;
+        //  SpawnPoint.transform.localPosition = spawnPointStartPos;
 
         // if (index == 0)
         // {
@@ -180,7 +184,7 @@ public class GameMechanics : MonoBehaviour
 
         Debug.Log("------------->Before release velocity: " + rb.linearVelocity);
 
-       // Vector3 forceDir;
+        // Vector3 forceDir;
 
         // if (swingDirection == 1)
         // {
@@ -192,7 +196,7 @@ public class GameMechanics : MonoBehaviour
         //     forceDir = Vector3.left;
         // }
 
-       // rb.AddForce(forceDir * forceStrength, ForceMode.Impulse);
+        // rb.AddForce(forceDir * forceStrength, ForceMode.Impulse);
         // rb.AddForce(Vector3.down * 1.5f, ForceMode.Impulse);
 
         currentCar = null;
@@ -261,7 +265,7 @@ public class GameMechanics : MonoBehaviour
         pendulum.transform.position = pendulumStartPos;
         pendulum.transform.rotation = pendulumStartRot;
 
-        // Reset camera
+        // Reset camera   
         mainCamera.transform.position = cameraStartPos;
         mainCamera.orthographicSize = cameraStartSize;
 
