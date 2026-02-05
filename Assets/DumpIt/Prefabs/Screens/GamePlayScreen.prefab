@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 7225223535952690346}
   - component: {fileID: 1499993136913561339}
   - component: {fileID: 5115455871655100762}
+  - component: {fileID: 2781225734170781080}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -426,6 +427,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2781225734170781080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688729794124927118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: QUIT
 --- !u!1 &1171163486053755611
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +826,7 @@ GameObject:
   - component: {fileID: 3219691955658072805}
   - component: {fileID: 8579112152528164182}
   - component: {fileID: 3097499566226219329}
+  - component: {fileID: 534627108260411916}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -866,7 +881,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Earn 20 coins to EXTEND tHE PLATFORM
+  m_text: EARN 20 COINS TO EXTEND THE PLATFORM.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc8d754152d1824abfeefb699d02bdd, type: 2}
   m_sharedMaterial: {fileID: -9062451916185538510, guid: 2cc8d754152d1824abfeefb699d02bdd, type: 2}
@@ -938,6 +953,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &534627108260411916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567444203276284983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: 5
 --- !u!1 &1581843034945350987
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +977,7 @@ GameObject:
   - component: {fileID: 642566086631835273}
   - component: {fileID: 121886444222386139}
   - component: {fileID: 2065178277769355937}
+  - component: {fileID: 611376404134942344}
   m_Layer: 5
   m_Name: CountScore
   m_TagString: Untagged
@@ -1075,6 +1104,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &611376404134942344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581843034945350987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: 1
 --- !u!1 &1636211537646324672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 11d5a26aa94cbd847968a5d2287fa365, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a41dce24f26d7641b4baa327ff0684f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1628,6 +1670,7 @@ GameObject:
   - component: {fileID: 825375975841441581}
   - component: {fileID: 1427112795290018341}
   - component: {fileID: 1758677406141504807}
+  - component: {fileID: 3734702098441535626}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1754,6 +1797,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3734702098441535626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787849117839445684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: RESTART
 --- !u!1 &3100915385123178703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,6 +2459,7 @@ GameObject:
   - component: {fileID: 4456758123852673087}
   - component: {fileID: 1296293592767137271}
   - component: {fileID: 6919715425565184627}
+  - component: {fileID: 2941982950976689787}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2457,7 +2514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: EARN 30 COINS TO CHANGE SWING DIRECTION.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cc8d754152d1824abfeefb699d02bdd, type: 2}
   m_sharedMaterial: {fileID: -9062451916185538510, guid: 2cc8d754152d1824abfeefb699d02bdd, type: 2}
@@ -2529,6 +2586,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2941982950976689787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366098886491631177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: 4
 --- !u!1 &4531428164144772731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2780,7 @@ GameObject:
   - component: {fileID: 2394614715305712071}
   - component: {fileID: 1635882247973121677}
   - component: {fileID: 5081256890777161550}
+  - component: {fileID: 3541158113124958803}
   m_Layer: 5
   m_Name: TapText
   m_TagString: Untagged
@@ -2836,6 +2907,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3541158113124958803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680719060403050830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: 2
 --- !u!1 &5759747518381909573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,6 +3819,7 @@ GameObject:
   - component: {fileID: 8318432551482340119}
   - component: {fileID: 4524409660966269611}
   - component: {fileID: 9197946738529866043}
+  - component: {fileID: 3064340284157467150}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3861,6 +3946,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3064340284157467150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8668346543484638634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: 3
 --- !u!1 &8718458775372984194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +3970,7 @@ GameObject:
   - component: {fileID: 3809952986401099037}
   - component: {fileID: 1447766618698448750}
   - component: {fileID: 8666626191195744298}
+  - component: {fileID: 3724664597874196823}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3998,6 +4097,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3724664597874196823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718458775372984194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: RESUME
 --- !u!1 &9079718534098042679
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,194 @@
+{
+  "1": {
+    "en": "Play",
+    "pt-BR": "Jogar",
+    "ru": "Играть",
+    "sp": "Jugar",
+    "fr": "Jouer",
+    "ar": "العب"
+  },
+  "LEVEL": {
+    "en": "Level",
+    "pt-BR": "Nível",
+    "ru": "Уровень",
+    "sp": "Nivel",
+    "fr": "Niveau",
+    "ar": "المستوى"
+  },
+  "RESUME": {
+    "en": "Resume",
+    "pt-BR": "Continuar",
+    "ru": "Продолжить",
+    "sp": "Reanudar",
+    "fr": "Reprendre",
+    "ar": "استئناف"
+  },
+  "HOME": {
+    "en": "Home",
+    "pt-BR": "Início",
+    "ru": "Главная",
+    "sp": "Inicio",
+    "fr": "Accueil",
+    "ar": "الرئيسية"
+  },
+  "SETTINGS": {
+    "en": "Settings",
+    "pt-BR": "Configurações",
+    "ru": "Настройки",
+    "sp": "Configuración",
+    "fr": "Paramètres",
+    "ar": "الإعدادات"
+  },
+  "PAUSED": {
+    "en": "Paused",
+    "pt-BR": "Pausado",
+    "ru": "Пауза",
+    "sp": "Pausado",
+    "fr": "En pause",
+    "ar": "متوقف مؤقتًا"
+  },
+  "MUSIC": {
+    "en": "Music",
+    "pt-BR": "Música",
+    "ru": "Музыка",
+    "sp": "Música",
+    "fr": "Musique",
+    "ar": "الموسيقى"
+  },
+  "SOUND": {
+    "en": "Sound",
+    "pt-BR": "Som",
+    "ru": "Звук",
+    "sp": "Sonido",
+    "fr": "Son",
+    "ar": "الصوت"
+  },
+  "ON": {
+    "en": "On",
+    "pt-BR": "Ligado",
+    "ru": "Вкл",
+    "sp": "Encendido",
+    "fr": "Activé",
+    "ar": "تشغيل"
+  },
+  "OFF": {
+    "en": "Off",
+    "pt-BR": "Desligado",
+    "ru": "Выкл",
+    "sp": "Apagado",
+    "fr": "Désactivé",
+    "ar": "إيقاف"
+  },
+  "LANGUAGE": {
+    "en": "Language",
+    "pt-BR": "Idioma",
+    "ru": "Язык",
+    "sp": "Idioma",
+    "fr": "Langue",
+    "ar": "اللغة"
+  },
+  "FAILED": {
+    "en": "Failed",
+    "pt-BR": "Falhou",
+    "ru": "Неудача",
+    "sp": "Fallido",
+    "fr": "Échoué",
+    "ar": "فشل"
+  },
+  "RETRY": {
+    "en": "Retry",
+    "pt-BR": "Tentar novamente",
+    "ru": "Повторить",
+    "sp": "Reintentar",
+    "fr": "Réessayer",
+    "ar": "إعادة المحاولة"
+  },
+  "COMPLETE": {
+    "en": "Complete",
+    "pt-BR": "Concluído",
+    "ru": "Завершено",
+    "sp": "Completado",
+    "fr": "Terminé",
+    "ar": "مكتمل"
+  },
+  "SCORE": {
+    "en": "Score",
+    "pt-BR": "Pontuação",
+    "ru": "Счёт",
+    "sp": "Puntuación",
+    "fr": "Score",
+    "ar": "النقاط"
+  },
+  "BEST": {
+    "en": "Best",
+    "pt-BR": "Melhor",
+    "ru": "Лучший",
+    "sp": "Mejor",
+    "fr": "Meilleur",
+    "ar": "الأفضل"
+  },
+  "1": {
+    "en": "New Text",
+    "pt-BR": "Novo Texto",
+    "ru": "Новый текст",
+    "sp": "Texto nuevo",
+    "fr": "Nouveau texte",
+    "ar": "نص جديد"
+  },
+  "2": {
+    "en": "Tap to drop the Blocks !",
+    "pt-BR": "Toque para soltar os blocos!",
+    "ru": "Нажмите, чтобы сбросить блоки!",
+    "sp": "Toca para soltar los bloques!",
+    "fr": "Appuyez pour lâcher les blocs !",
+    "ar": "اضغط لإسقاط الكتل!"
+  },
+  "3": {
+    "en": "EARN 20 COINS FOR EVERY 100 SCORE !!",
+    "pt-BR": "Ganhe 20 moedas a cada 100 pontos!!",
+    "ru": "Получайте 20 монет за каждые 100 очков!!",
+    "sp": "Gana 20 monedas por cada 100 puntos!!",
+    "fr": "Gagnez 20 pièces pour chaque 100 points !!",
+    "ar": "اكسب 20 عملة مقابل كل 100 نقطة!!"
+  },
+  "4": {
+    "en": "EARN 30 COINS TO CHANGE SWING DIRECTION.",
+    "pt-BR": "Ganhe 30 moedas para mudar a direção do balanço.",
+    "ru": "Заработайте 30 монет, чтобы изменить направление раскачивания.",
+    "sp": "Gana 30 monedas para cambiar la dirección del movimiento.",
+    "fr": "Gagnez 30 pièces pour changer la direction du mouvement.",
+    "ar": "اكسب 30 عملة لتغيير اتجاه التأرجح."
+  },
+  "5": {
+    "en": "EARN 20 COINS TO EXTEND THE PLATFORM.",
+    "pt-BR": "Ganhe 20 moedas para estender a plataforma.",
+    "ru": "Заработайте 20 монет, чтобы расширить платформу.",
+    "sp": "Gana 20 monedas para extender la plataforma.",
+    "fr": "Gagnez 20 pièces pour étendre la plateforme.",
+    "ar": "اكسب 20 عملة لتمديد المنصة."
+  },
+ "RESTART": {
+    "en": "Restart",
+    "pt-BR": "Reiniciar",
+    "ru": "Перезапуск",
+    "sp": "Reiniciar",
+    "fr": "Redémarrer",
+    "ar": "إعادة التشغيل"
+  },
+  "RESUME": {
+    "en": "Resume",
+    "pt-BR": "Continuar",
+    "ru": "Продолжить",
+    "sp": "Reanudar",
+    "fr": "Reprendre",
+    "ar": "استئناف"
+  },
+  "QUIT": {
+    "en": "Quit",
+    "pt-BR": "Sair",
+    "ru": "Выйти",
+    "sp": "Salir",
+    "fr": "Quitter",
+    "ar": "خروج"
+  }
+}
