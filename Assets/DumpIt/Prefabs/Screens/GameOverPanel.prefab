@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 6150071546794156732}
   - component: {fileID: 4081710577228937117}
   - component: {fileID: 8746879453003057111}
+  - component: {fileID: 2764351530525911176}
   m_Layer: 5
   m_Name: BestScoreDisplay
   m_TagString: Untagged
@@ -754,6 +755,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2764351530525911176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667769371073504190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: BEST
 --- !u!1 &5653372769499976168
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +991,7 @@ GameObject:
   - component: {fileID: 5934641188722813969}
   - component: {fileID: 3534580928090140537}
   - component: {fileID: 4243986752070668574}
+  - component: {fileID: 1031981639131801566}
   m_Layer: 5
   m_Name: ScoreDisplayText
   m_TagString: Untagged
@@ -1103,6 +1118,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1031981639131801566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494371225520578897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6db35dc2b152348add0b08d1f6e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedTMPText
+  localizationKey: SCORE
 --- !u!1 &7955713326012095923
 GameObject:
   m_ObjectHideFlags: 0
