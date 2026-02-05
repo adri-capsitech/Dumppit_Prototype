@@ -11,6 +11,7 @@ public class GameOverUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bestScoreText;
     [SerializeField] private Button homeButton;
     [SerializeField] private Button retryButton;
+    public AudioClip gameOverMusic;
 
 
     private void Start()
@@ -26,6 +27,9 @@ public class GameOverUi : MonoBehaviour
         // Add button listeners
         homeButton.onClick.AddListener(OnHomeButtonClicked);
         retryButton.onClick.AddListener(OnRetryButtonClicked);
+        if(AudioController.Instance != null)
+            AudioController.Instance.PlayMusic(gameOverMusic);
+        
     }
     private void OnDisable()
     {

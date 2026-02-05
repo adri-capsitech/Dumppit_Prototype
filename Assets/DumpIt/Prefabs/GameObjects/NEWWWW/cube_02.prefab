@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectLanding
   hasLanded: 0
+  LandingSound: {fileID: 8300000, guid: 04427267ff3cca349a916446d4e5314a, type: 3}
 --- !u!1 &3448665597067870019
 GameObject:
   m_ObjectHideFlags: 0

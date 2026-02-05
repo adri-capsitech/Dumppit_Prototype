@@ -406,6 +406,9 @@ MonoBehaviour:
   cameraStartSize: 0
   mainCamera: {fileID: 0}
   isIdle: 1
+  releaseSound: {fileID: 8300000, guid: 873462f739dd2f844ad4ceae920b51f6, type: 3}
+  gamePlayMusic: {fileID: 8300000, guid: 19a0a6c05026d1f4eae9ac6dc7372f37, type: 3}
+  highScorePop: {fileID: 8300000, guid: 5dd14517f9db99641be5e77eed7fd1cd, type: 3}
 --- !u!1 &3298099034798791226
 GameObject:
   m_ObjectHideFlags: 0

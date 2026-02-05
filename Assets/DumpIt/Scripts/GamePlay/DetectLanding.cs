@@ -4,6 +4,7 @@ using UnityEngine;
 public class DetectLanding : MonoBehaviour
 {
     public bool hasLanded = false;
+    public AudioClip LandingSound;
 
     void Update()
     {
@@ -24,6 +25,10 @@ public class DetectLanding : MonoBehaviour
         if (collision.collider.CompareTag("Platform") || collision.collider.CompareTag("Car"))
         {
             hasLanded = true;
+
+            if (AudioController.Instance != null)
+                AudioController.Instance.PlaySFX(LandingSound);
+
 
             GameMechanics.Instance.SpawnCars();
             GameMechanics.Instance.UpdateScore();
