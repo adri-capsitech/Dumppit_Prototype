@@ -446,6 +446,8 @@ MonoBehaviour:
   overlays:
   - key: HighScorePopUp
     prefab: {fileID: 7510266027858559825, guid: 459a28d2478561e468cea0d4f15e2e86, type: 3}
+  - key: Settings
+    prefab: {fileID: 7510266027858559825, guid: 459a28d2478561e468cea0d4f15e2e86, type: 3}
 --- !u!4 &467253650
 Transform:
   m_ObjectHideFlags: 0
@@ -831,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioController
   musicSource: {fileID: 1601318393}
-  sfxSource: {fileID: 0}
+  sfxSource: {fileID: 1601318393}
 --- !u!4 &1601318395
 Transform:
   m_ObjectHideFlags: 0

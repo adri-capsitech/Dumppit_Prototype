@@ -3,41 +3,66 @@ using UnityEngine.UI;
 
 public class AudioToggleUI : MonoBehaviour
 {
+    [Header("Sprites")]
     public Sprite SoundOn;
     public Sprite SoundOff;
-
-    private Image soundImage;
-    private bool isSoundOn = true;
-
-    void Awake()
-    {
-        soundImage = GetComponent<Image>();
-    }
+    public Sprite MusicOn;
+    public Sprite MusicOff;
+    bool isSoundOn;
+    bool isMusicOn;
+    [Header("UI Images")]
+    public Image soundImage;
+    public Image musicImage;
 
     void Start()
     {
+       
         isSoundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
-        UpdateUI();
-        ApplySound();
+        isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+
+        // ApplySFX();
+        // ApplyMusic();
+        UpdateSFXUI();
+        UpdateMusicUI();
     }
 
-    public void ToggleSound()
+    // ---------- SFX ----------
+    public void ToggleSFX()
     {
         isSoundOn = !isSoundOn;
         PlayerPrefs.SetInt("SoundOn", isSoundOn ? 1 : 0);
-        ApplySound();
-        UpdateUI();  
+
+        ApplySFX();
+        UpdateSFXUI();
     }
 
-    void ApplySound()
+    void ApplySFX()
     {
-        AudioController.Instance.ToggleMusic(isSoundOn);
         AudioController.Instance.ToggleSFX(isSoundOn);
     }
 
-    void UpdateUI()
+    void UpdateSFXUI()
     {
-        Debug.Log("Called");
         soundImage.sprite = isSoundOn ? SoundOn : SoundOff;
+    }
+
+    // ---------- MUSIC ----------
+    public void ToggleMusic()
+    {
+        isMusicOn = !isMusicOn;
+        PlayerPrefs.SetInt("MusicOn", isMusicOn ? 1 : 0);
+
+        ApplyMusic();
+        UpdateMusicUI();
+    }
+
+    void ApplyMusic()
+    {
+        AudioController.Instance.ToggleMusic(isMusicOn);
+    }
+
+    void UpdateMusicUI()
+    {
+        musicImage.sprite = isMusicOn ? MusicOn : MusicOff;
     }
 }

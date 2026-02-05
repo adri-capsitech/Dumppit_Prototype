@@ -18,6 +18,16 @@ public class AudioController : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        LoadAudioSettings();
+    }
+    void LoadAudioSettings()
+    {
+        bool musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+        bool sfxOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
+
+        ToggleMusic(musicOn);
+        ToggleSFX(sfxOn);
     }
 
     public void PlayMusic(AudioClip clip)
@@ -41,7 +51,6 @@ public class AudioController : MonoBehaviour
             musicSource.Stop();
         }
     }
-
 
     public void ToggleMusic(bool isOn)
     {

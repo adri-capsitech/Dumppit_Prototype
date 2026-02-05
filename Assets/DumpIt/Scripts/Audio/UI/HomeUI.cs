@@ -7,6 +7,7 @@ public class HomeUI : MonoBehaviour
 {
     [SerializeField] private Button playButton;
     [SerializeField] private GameObject HomeScreenPanel;
+    [SerializeField] private Button settingsButton;
     public AudioClip homeMusicClip;
 
     private void OnEnable()
@@ -14,9 +15,10 @@ public class HomeUI : MonoBehaviour
         Time.timeScale = 1f;
         HomeScreenPanel.SetActive(true);
         playButton.onClick.AddListener(OnPlayClicked);
-        if(AudioController.Instance != null)
+        settingsButton.onClick.AddListener(OnSettingsClicked);
+        if (AudioController.Instance != null)
             AudioController.Instance.PlayMusic(homeMusicClip);
-       
+
     }
 
     private void OnDisable()
@@ -27,6 +29,10 @@ public class HomeUI : MonoBehaviour
     void RemoveAllListener()
     {
         playButton.onClick.RemoveListener(OnPlayClicked);
+    }
+    private void OnSettingsClicked()
+    {
+        AppStateManager.Instance.ShowOverlay("Settings");
     }
 
     private void OnPlayClicked()

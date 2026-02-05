@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 1595502613779238025}
   HomeScreenPanel: {fileID: 9189670449403715196}
+  settingsButton: {fileID: 5467746019821028413}
   homeMusicClip: {fileID: 8300000, guid: 7ac4bf40f17706e4498d03cc27119bb4, type: 3}
 --- !u!1 &6710049749163235586
 GameObject:
@@ -201,6 +202,7 @@ GameObject:
   - component: {fileID: 4366681557446526437}
   - component: {fileID: 7690448776976477357}
   - component: {fileID: 5467746019821028413}
+  - component: {fileID: 2423528356588453865}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -310,6 +312,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2423528356588453865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710049749163235586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e920780b8b2662f46ac1550c0cef6409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: {fileID: 8300000, guid: 847c992844840c44085153612cd17397, type: 3}
 --- !u!1 &7394788356491599067
 GameObject:
   m_ObjectHideFlags: 0
