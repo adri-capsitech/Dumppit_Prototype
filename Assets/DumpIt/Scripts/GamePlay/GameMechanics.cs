@@ -34,6 +34,9 @@ public class GameMechanics : MonoBehaviour
 
     public Camera mainCamera;
     public bool isIdle = true;
+    public AudioClip releaseSound;
+    public AudioClip gamePlayMusic;
+    public AudioClip highScorePop;
 
     private void Awake()
     {
@@ -61,6 +64,8 @@ public class GameMechanics : MonoBehaviour
         SpawnCars();
         SwingMotion.Instance.stopSwing = false;
         mainCamera = Camera.main;
+        if (AudioController.Instance != null)
+            AudioController.Instance.PlayMusic(gamePlayMusic);
 
         // // SAVE INITIAL STATES
         // pendulumStartPos = pendulum.transform.position;
@@ -165,6 +170,10 @@ public class GameMechanics : MonoBehaviour
     {
 
         if (currentCar == null) return;
+
+        if (AudioController.Instance != null)
+            AudioController.Instance.PlaySFX(releaseSound);
+
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
 
         RopeController ropeController = currentCar.GetComponentInChildren<RopeController>();
@@ -226,6 +235,8 @@ public class GameMechanics : MonoBehaviour
     {
         if (isGameOver == true)
         {
+            if (AudioController.Instance != null)
+                AudioController.Instance.StopMusic();
             SwingMotion.Instance.stopSwing = true;
             Time.timeScale = 0;
             Debug.Log("Game Over");
@@ -240,6 +251,8 @@ public class GameMechanics : MonoBehaviour
 
 
         AppStateManager.Instance.ShowOverlay("HighScorePopUp");
+        if (AudioController.Instance != null)
+            AudioController.Instance.PlaySFX(highScorePop);
         Debug.Log("-> New High Score Reached DURING GAMEPLAY");
         // if (celebrationEffect != null)
         // {

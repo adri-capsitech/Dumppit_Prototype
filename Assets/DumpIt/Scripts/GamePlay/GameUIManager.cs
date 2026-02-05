@@ -38,6 +38,7 @@ public class GameUIManager : MonoBehaviour
 
     public float idleTime = 10f;
     [SerializeField] private float IdleCounter = 0;
+    public Image imagepanel;
 
 
 
@@ -122,6 +123,7 @@ public class GameUIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         PausePanel.SetActive(true);
+        imagepanel.GetComponent<Image>().enabled = true;
         transform.parent.GetComponent<Image>().enabled = true;
 
     }
@@ -130,6 +132,7 @@ public class GameUIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         PausePanel.SetActive(false);
+        imagepanel.GetComponent<Image>().enabled = false;
         transform.parent.GetComponent<Image>().enabled = false;
 
     }
@@ -138,6 +141,8 @@ public class GameUIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         transform.parent.GetComponent<Image>().enabled = false;
+        imagepanel.GetComponent<Image>().enabled = false;
+
         PausePanel.SetActive(false);
 
         PlatformExtender.Instance.ResetPlatform();
