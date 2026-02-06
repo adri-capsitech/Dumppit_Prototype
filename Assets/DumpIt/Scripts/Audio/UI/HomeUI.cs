@@ -61,27 +61,3 @@ public class HomeUI : MonoBehaviour
     }
 
 }
-
-// using UnityEngine;
-// using UnityEngine.UI;
-
-// public class HomeUI : MonoBehaviour
-// {
-//     [SerializeField] private Button playButton;
-
-//     private void OnEnable()
-//     {
-//         Time.timeScale = 1f;
-//         playButton.onClick.AddListener(OnPlayClicked);
-//     }
-
-//     private void OnDisable()
-//     {
-//         playButton.onClick.RemoveListener(OnPlayClicked);
-//     }
-
-//     private void OnPlayClicked()
-//     {
-//         AppManager.Instance.StartGame();
-//     }
-// }

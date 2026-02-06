@@ -7,7 +7,7 @@ public class PopupAnimationController : MonoBehaviour
     public RectTransform rectPanel;
     public string popupName;
     public string popupText;
-    public float waitTime = 2;
+    public float waitTime = 0.2f;
     public TMP_Text popupTextUI;
     void OnEnable()
     {
