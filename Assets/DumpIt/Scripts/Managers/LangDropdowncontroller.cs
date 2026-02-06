@@ -3,40 +3,34 @@ using UnityEngine;
 
 public class LangDropdowncontroller : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public TextMeshProUGUI output;
+    [SerializeField] private TMP_Dropdown dropdown;
+
+    private readonly string[] languageCodes =
+    {
+        "en",
+        "pt-BR",
+        "ru",
+        "sp",
+        "fr"
+    };
+
     void Start()
     {
-        
+
+        string savedLang = PlayerPrefs.GetString("language", "en");
+        int index = System.Array.IndexOf(languageCodes, savedLang);
+
+        if (index >= 0)
+        {
+            dropdown.SetValueWithoutNotify(index);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnLanguageChanged(int index)
     {
-        switch (index)
-        {
-            case 0:
-                LocalizationManager.Instance.SetLanguage("en");
-                break;
+        if (index < 0 || index >= languageCodes.Length)
+            return;
 
-            case 1:
-                LocalizationManager.Instance.SetLanguage("pt-BR");
-                break;
-
-            case 2:
-                LocalizationManager.Instance.SetRussian();
-                break;
-
-            case 3:
-                LocalizationManager.Instance.SetSpanish();
-                break;
-            case 4:
-                LocalizationManager.Instance.SetLanguage("fr");
-                break;
-        }
+        LocalizationManager.Instance.SetLanguage(languageCodes[index]);
     }
 }
