@@ -158,6 +158,7 @@ public class GameUIManager : MonoBehaviour
     public void QuitGame()
     {
         AppManager.Instance.ExitGame();
+        CameraControl.Instance.SwitchToDefaultCamera();
         AppStateManager.Instance.SetHome();
     }
 
