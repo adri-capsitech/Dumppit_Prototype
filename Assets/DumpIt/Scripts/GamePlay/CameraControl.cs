@@ -23,6 +23,8 @@ public class CameraControl : MonoBehaviour
     [Header("Camera Smooth Settings")]
     public float cameraMoveSpeed = 1f;
 
+    public float defaultOrthoSize = 0f;
+
     private Coroutine cameraMoveRoutine;
 
 
@@ -46,6 +48,7 @@ public class CameraControl : MonoBehaviour
 
         currentBasePos = defaultPos;
         currentBaseRot = defaultRot;
+        defaultOrthoSize = Camera.main.orthographicSize;
 
     }
 
@@ -107,7 +110,7 @@ public class CameraControl : MonoBehaviour
     {
         currentBasePos = defaultPos;
         currentBaseRot = defaultRot;
-
+        Camera.main.orthographicSize = defaultOrthoSize;
         StartCameraMove(currentBasePos, currentBaseRot);
     }
 

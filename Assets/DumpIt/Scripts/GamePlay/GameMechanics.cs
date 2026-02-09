@@ -281,7 +281,7 @@ public class GameMechanics : MonoBehaviour
         // Reset camera   
         mainCamera.transform.position = cameraStartPos;
         mainCamera.orthographicSize = cameraStartSize;
-
+        SwingMotion.Instance.swingZ = false;
         if (currentCar != null)
         {
             Destroy(currentCar);
