@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523092157913",
+    "project_id": "pharaoahfall",
+    "storage_bucket": "pharaoahfall.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523092157913:android:03424c135f3a9a159025c8",
+        "android_client_info": {
+          "package_name": "com.thegamewise.pharaohfall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrKQaw282QtqNbN8IFo20nd0pqVc7YX-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
