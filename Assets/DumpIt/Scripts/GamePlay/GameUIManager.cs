@@ -55,7 +55,9 @@ public class GameUIManager : MonoBehaviour
         // Button bindings
         Pausebtn.onClick.AddListener(TogglePause);
         Resumebtn.onClick.AddListener(ResumeGame);
-        Restartbtn.onClick.AddListener(RestartGame);
+        // Restartbtn.onClick.AddListener(RestartGame);
+        Restartbtn.onClick.AddListener(OnRestartButtonClicked);
+
         Quitbtn.onClick.AddListener(QuitGame);
 
         Platformbtn.onClick.AddListener(OpenPlatformExtendPanel);
@@ -144,6 +146,8 @@ public class GameUIManager : MonoBehaviour
         imagepanel.GetComponent<Image>().enabled = false;
 
         PausePanel.SetActive(false);
+        // Restartbtn.onClick.AddListener(AdManager.Instance.ShowAd);
+
 
         PlatformExtender.Instance.ResetPlatform();
         GamePlayManager.Instance.Restart();
@@ -300,4 +304,28 @@ public class GameUIManager : MonoBehaviour
             DataManager.Instance.OnCoinsUpdated -= OnCoinsUpdated;
         }
     }
+    // public void OnRestartButtonClicked()
+    // {
+    //     AdManager.Instance.ShowAd(OnAdFinishedRestart);
+    // }
+    public void OnRestartButtonClicked()
+    {
+        Time.timeScale = 1;
+
+        if (AdManager.Instance != null)
+        {
+            AdManager.Instance.ShowAd(OnAdFinishedRestart);
+        }
+        else
+        {
+            Debug.LogError("AdManager is NULL! Restarting game without ad.");
+            RestartGame();   
+        }
+    }
+
+    private void OnAdFinishedRestart()
+    {
+        RestartGame();
+    }
+
 }
