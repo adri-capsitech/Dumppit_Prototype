@@ -49,17 +49,31 @@ public class GameOverUi : MonoBehaviour
 
         // // Go to home screen - overlays will be hidden automatically after this frame
         // GameMechanics.Instance.ResetGameState();
+        // AdManager.Instance.InterstitialShowAd();
+        AdManager.Instance.ShowInterstitial(() =>
+        {
+            AppManager.Instance.ExitGame();
+            AppStateManager.Instance.SetHome();
+        });
         AppManager.Instance.ExitGame();
-        AppStateManager.Instance.SetHome();
+        // AdManager.Instance.InterstitialShowAd();
+        // AppStateManager.Instance.SetHome();
         // AppStateManager.Instance.HideOverlay("FinalScorePopUp");
     }
 
     public void OnRetryButtonClicked()
     {
         Debug.Log("Retry Button Clicked");
-        AppStateManager.Instance.SetGameplay();
-        AppManager.Instance.RestartGame();
-        GameUIManager.Instance.RestartGame();
+        // AdManager.Instance.InterstitialShowAd();
+        AdManager.Instance.ShowInterstitial(() =>
+        {
+            AppStateManager.Instance.SetGameplay();
+            AppManager.Instance.RestartGame();
+            GameUIManager.Instance.RestartGame();
+        });
+        // AppStateManager.Instance.SetGameplay();
+        // AppManager.Instance.RestartGame();
+        // GameUIManager.Instance.RestartGame();
     }
 
     // public void UpdateScore(int score)

@@ -78,5 +78,47 @@
     "sp": "Salir",
     "fr": "Quitter",
     "ar": "خروج"
+  },
+  "SOUND": {
+    "en": "Sound",
+    "pt-BR": "Som",
+    "ru": "Звук",
+    "sp": "Sonido",
+    "fr": "Son",
+    "ar": "الصوت"
+  },
+  "MUSIC": {
+    "en": "Music",
+    "pt-BR": "Música",
+    "ru": "Музыка",
+    "sp": "Música",
+    "fr": "Musique",
+    "ar": "الموسيقى"
+  },
+  "5": {
+    "en": "Privacy and Policy",
+    "pt-BR": "Privacidade e Política",
+    "ru": "Политика конфиденциальности",
+    "sp": "Privacidad y Política",
+    "fr": "Confidentialité et Politique",
+    "ar": "الخصوصية والسياسة"
+  },
+  "ENGLISH": {
+    "en": "English",
+    "pt-BR": "Inglês",
+    "ru": "Английский",
+    "sp": "Inglés",
+    "fr": "Anglais",
+    "ar": "الإنجليزية"
+  },
+  "6": {
+    "en": "Option A",
+    "pt-BR": "Opção A",
+    "ru": "Опция A",
+    "sp": "Opción A",
+    "fr": "Option A",
+    "ar": "الخيار أ"
   }
+
+
 }
