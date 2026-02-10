@@ -118,7 +118,45 @@
     "sp": "Opción A",
     "fr": "Option A",
     "ar": "الخيار أ"
+  },
+  "SETTINGS": {
+    "en": "Settings",
+    "pt-BR": "Configurações",
+    "ru": "Настройки",
+    "sp": "Configuración",
+    "fr": "Paramètres",
+    "ar": "الإعدادات"
+  },
+  "PAUSE": {
+    "en": "Pause",
+    "pt-BR": "Pausa",
+    "ru": "Пауза",
+    "sp": "Pausa",
+    "fr": "Pause",
+    "ar": "إيقاف مؤقت"
+  },
+  "PLAY": {
+    "en": "Play",
+    "pt-BR": "Jogar",
+    "ru": "Играть",
+    "sp": "Jugar",
+    "fr": "Jouer",
+    "ar": "لعب"
+  },
+  "PHARAOH": {
+    "en": "Pharaoh",
+    "pt-BR": "Faraó",
+    "ru": "Фараон",
+    "sp": "Faraón",
+    "fr": "Pharaon",
+    "ar": "فرعون"
+  },
+  "FALL": {
+  "en": "Fall",
+  "pt-BR": "Queda",
+  "ru": "Падение",
+  "sp": "Caída",
+  "fr": "Chute",
+  "ar": "سقوط"
   }
-
-
 }

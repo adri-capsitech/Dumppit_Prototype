@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class AdManager : MonoBehaviour
 {
 #if UNITY_ANDROID
-    private const string AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
-    private const string Inter_AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
+    private const string AD_UNIT_ID = "ca-app-pub-6960572606491221/7105761833";
+    private const string Inter_AD_UNIT_ID = "ca-app-pub-6960572606491221/3221621057";
 #elif UNITY_IPHONE
         private const string AD_UNIT_ID = "ca-app-pub-3940256099942544/1712485313";
         private const string Inter_AD_UNIT_ID = "ca-app-pub-3940256099942544/4411468910"; 

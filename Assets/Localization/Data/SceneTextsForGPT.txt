@@ -22,8 +22,3 @@ Structure:
 
 Entries:
 
-SOUND = SOUND
-MUSIC = MUSIC
-1 = PRIVACY AND POLICY
-ENGLISH = ENGLISH
-2 = Option A
