@@ -23,7 +23,7 @@ public class GamePlayManager : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log("GAME: StartGame()");
+        //Debug.Log("GAME: StartGame()");
         GameMechanics.Instance.StartGame();
     }
 

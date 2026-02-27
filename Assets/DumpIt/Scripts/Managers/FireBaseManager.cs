@@ -39,7 +39,7 @@ public class FirebaseManager : MonoBehaviour
 
                 LogSessionStart();
 
-                Debug.Log("[Firebase] Initialized | Session: " + SessionId);
+                //Debug.Log("[Firebase] Initialized | Session: " + SessionId);
             }
             else
             {

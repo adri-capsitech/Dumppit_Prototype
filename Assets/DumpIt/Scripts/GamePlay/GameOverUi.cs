@@ -41,7 +41,7 @@ public class GameOverUi : MonoBehaviour
     public void OnHomeButtonClicked()
     {
 
-        Debug.Log("Home Button Clicked");
+        //Debug.Log("Home Button Clicked");
         DataManager.Instance.SaveBestScoreIfNeeded();
         // Destroy(AppManager.Instance.GameLogicPrefab);
 
@@ -63,7 +63,7 @@ public class GameOverUi : MonoBehaviour
 
     public void OnRetryButtonClicked()
     {
-        Debug.Log("Retry Button Clicked");
+        //Debug.Log("Retry Button Clicked");
         // AdManager.Instance.InterstitialShowAd();
         AdManager.Instance.ShowInterstitial(() =>
         {
@@ -78,7 +78,7 @@ public class GameOverUi : MonoBehaviour
 
     // public void UpdateScore(int score)
     // {
-    //     Debug.Log("Score is getting Updated");
+    //     //Debug.Log("Score is getting Updated");
     //     finalScoreText.text = "Final Score: " + score;
     // }
 }

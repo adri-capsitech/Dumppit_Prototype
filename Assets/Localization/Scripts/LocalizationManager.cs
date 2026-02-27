@@ -27,7 +27,7 @@ public class LocalizationManager : MonoBehaviour
        DontDestroyOnLoad(gameObject);
         }
        
-       Debug.Log("TEST");
+       //Debug.Log("TEST");
 
         if (localizationJson == null)
         {
@@ -41,7 +41,7 @@ public class LocalizationManager : MonoBehaviour
             );
 
         currentLangCode = PlayerPrefs.GetString("language");
-        Debug.Log("Saved Language: " + currentLangCode);
+        //Debug.Log("Saved Language: " + currentLangCode);
         if (currentLangCode!="")
            SetLanguage(currentLangCode);
         else

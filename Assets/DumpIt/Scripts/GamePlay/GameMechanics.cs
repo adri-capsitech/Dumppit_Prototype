@@ -115,7 +115,7 @@ public class GameMechanics : MonoBehaviour
     {
         if (currentCar != null) return;
 
-        Debug.Log("Spawning Car ..");
+        //Debug.Log("Spawning Car ..");
         SpawnCollider spawnCollider = FindFirstObjectByType<SpawnCollider>();
         if (spawnCollider != null)
             spawnCollider.ResetTrigger();
@@ -146,17 +146,17 @@ public class GameMechanics : MonoBehaviour
             landing.hasLanded = false;
         }
 
-        Debug.Log("Current Car after Spawning:" + currentCar);
+        //Debug.Log("Current Car after Spawning:" + currentCar);
     }
 
     // void ReleaseRustic()
     // {
     //     if (currentCar == null)
     //     {
-    //         Debug.Log("No car ..");
+    //         //Debug.Log("No car ..");
     //         return;
     //     }
-    //     Debug.Log("Releasing Car ..");
+    //     //Debug.Log("Releasing Car ..");
     //     var rb = currentCar.GetComponent<Rigidbody>();
     //     currentCar.transform.SetParent(null);
     //     // rb.isKinematic = false;
@@ -191,7 +191,7 @@ public class GameMechanics : MonoBehaviour
         rb.useGravity = true;
         rb.freezeRotation = false;
 
-        Debug.Log("------------->Before release velocity: " + rb.linearVelocity);
+        //Debug.Log("------------->Before release velocity: " + rb.linearVelocity);
 
         // Vector3 forceDir;
 
@@ -209,7 +209,7 @@ public class GameMechanics : MonoBehaviour
         // rb.AddForce(Vector3.down * 1.5f, ForceMode.Impulse);
 
         currentCar = null;
-        Debug.Log("Current Car after release:" + currentCar);
+        //Debug.Log("Current Car after release:" + currentCar);
     }
 
     public void AdjustHeight()
@@ -222,7 +222,7 @@ public class GameMechanics : MonoBehaviour
             mainCamera.orthographicSize += heightIncrease;
         }
 
-        Debug.Log("Pendulum & Camera height increased!");
+        //Debug.Log("Pendulum & Camera height increased!");
     }
 
     public void UpdateScore()
@@ -239,7 +239,7 @@ public class GameMechanics : MonoBehaviour
                 AudioController.Instance.StopMusic();
             SwingMotion.Instance.stopSwing = true;
             Time.timeScale = 0;
-            Debug.Log("Game Over");
+            //Debug.Log("Game Over");
             ResetGameState();
             CameraControl.Instance.SwitchToDefaultCamera();
             // Destroy(r.gameObject);
@@ -253,7 +253,7 @@ public class GameMechanics : MonoBehaviour
         AppStateManager.Instance.ShowOverlay("HighScorePopUp");
         if (AudioController.Instance != null)
             AudioController.Instance.PlaySFX(highScorePop);
-        Debug.Log("-> New High Score Reached DURING GAMEPLAY");
+        //Debug.Log("-> New High Score Reached DURING GAMEPLAY");
         // if (celebrationEffect != null)
         // {
         //     var celebration = Instantiate(celebrationEffect, Camera.main.transform, false);

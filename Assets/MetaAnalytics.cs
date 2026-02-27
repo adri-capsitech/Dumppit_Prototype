@@ -10,7 +10,7 @@ public class MetaAnalytics : MonoBehaviour
             FB.Init(() =>
             {
                 FB.ActivateApp();
-                Debug.Log("Meta Analytics Started");
+                //Debug.Log("Meta Analytics Started");
             });
         }
         else

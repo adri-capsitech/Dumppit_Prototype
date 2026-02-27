@@ -33,7 +33,7 @@ public class DetectLanding : MonoBehaviour
             GameMechanics.Instance.SpawnCars();
             GameMechanics.Instance.UpdateScore();
             int score = DataManager.Instance.GetCurrentScore();
-            Debug.Log("Score is - " + score);
+            //Debug.Log("Score is - " + score);
         }
     }
 

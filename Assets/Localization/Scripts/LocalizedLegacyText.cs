@@ -22,7 +22,7 @@ public class LocalizedLegacyText : MonoBehaviour
             );
             return;
         }
-        Debug.Log("Called");
+        //Debug.Log("Called");
         LocalizationManager.Instance.OnLanguageChanged += UpdateText;
         UpdateText();
     }
@@ -37,7 +37,7 @@ public class LocalizedLegacyText : MonoBehaviour
 
     void UpdateText()
     {
-        Debug.Log("updated");
+        //Debug.Log("updated");
         text.text = LocalizationManager.Instance.GetText(localizationKey);
     }
 }

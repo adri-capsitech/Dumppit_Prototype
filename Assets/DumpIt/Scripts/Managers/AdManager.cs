@@ -77,7 +77,7 @@ public class AdManager : MonoBehaviour
             }
             // The ad loaded successfully.
             interstitialAd = ad;
-            Debug.Log("Interstitial Loaded");
+            //Debug.Log("Interstitial Loaded");
         });
     }
     
@@ -118,7 +118,7 @@ public class AdManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Ad not ready, skipping ad...");
+            //Debug.Log("Ad not ready, skipping ad...");
             onAdFinished?.Invoke(); // Fallback: restart game anyway
             LoadAd();
         }
@@ -136,7 +136,7 @@ public class AdManager : MonoBehaviour
         {
             interstitialAd.OnAdFullScreenContentClosed += () =>
             {
-                Debug.Log("Interstitial closed");
+                //Debug.Log("Interstitial closed");
                 InterstitialLoadAd(); // reload
                 onAdClosed?.Invoke();
             };
@@ -145,7 +145,7 @@ public class AdManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Interstitial not ready, skipping");
+            //Debug.Log("Interstitial not ready, skipping");
             onAdClosed?.Invoke();
             InterstitialLoadAd();
         }
@@ -254,7 +254,7 @@ public class AdManager : MonoBehaviour
             }
 
             rewardedAd = ad;
-            Debug.Log("Ad reloaded");
+            //Debug.Log("Ad reloaded");
         });
     }
     public void InterstitialReloadAd()
@@ -273,7 +273,7 @@ public class AdManager : MonoBehaviour
                 }   
 
                 interstitialAd = ad;
-                Debug.Log("Ad reloaded");
+                //Debug.Log("Ad reloaded");
             });
         };
     }

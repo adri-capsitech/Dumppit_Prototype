@@ -29,6 +29,6 @@ public class RemoveLocalizationFromScene
             }
         }
 
-        Debug.Log($"Removed {removedCount} localization components from scene '{scene.name}'.");
+        //Debug.Log($"Removed {removedCount} localization components from scene '{scene.name}'.");
     }
 }

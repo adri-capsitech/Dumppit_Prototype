@@ -19,14 +19,14 @@ public static class MetaAnalyticsAutoAttach
         if (go == null)
         {
             go = new GameObject(GameObjectName);
-            Debug.Log("[Editor] Created GameObject: " + GameObjectName);
+            //Debug.Log("[Editor] Created GameObject: " + GameObjectName);
         }
 
         // Attach MetaAnalytics script if missing
         if (go.GetComponent<MetaAnalytics>() == null)
         {
             go.AddComponent<MetaAnalytics>();
-            Debug.Log("[Editor] MetaAnalytics script attached");
+            //Debug.Log("[Editor] MetaAnalytics script attached");
             EditorUtility.SetDirty(go);
         }
     }

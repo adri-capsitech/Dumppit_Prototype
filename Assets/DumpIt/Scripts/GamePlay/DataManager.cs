@@ -69,7 +69,7 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt(SCORE_KEY, Score);
         PlayerPrefs.Save();
         FinalScore = Score;
-        Debug.Log("The final score is " + FinalScore);
+        //Debug.Log("The final score is " + FinalScore);
 
         int bestScore = GetBestScore();
         OnScoreUpdated?.Invoke(FinalScore);
@@ -79,7 +79,7 @@ public class DataManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(DYNAMIC_HIGH_SCORE_KEY, FinalScore);
             OnNewBestScore?.Invoke(FinalScore);
-            //  Debug.Log("-> New High Score Reached DURING GAMEPLAY");
+            //  //Debug.Log("-> New High Score Reached DURING GAMEPLAY");
             // if (FinalScore != 1)
             highScoreAchieved = true;
 
