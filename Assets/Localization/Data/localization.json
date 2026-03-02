@@ -55,7 +55,7 @@
     "fr": "Gagnez 20 pièces pour étendre la plateforme.",
     "ar": "اكسب 20 عملة لتمديد المنصة."
   },
- "RESTART": {
+  "RESTART": {
     "en": "Restart",
     "pt-BR": "Reiniciar",
     "ru": "Перезапуск",
@@ -143,20 +143,12 @@
     "fr": "Jouer",
     "ar": "لعب"
   },
-  "PHARAOH": {
-    "en": "Pharaoh",
-    "pt-BR": "Faraó",
-    "ru": "Фараон",
-    "sp": "Faraón",
-    "fr": "Pharaon",
-    "ar": "فرعون"
-  },
-  "FALL": {
-  "en": "Fall",
-  "pt-BR": "Queda",
-  "ru": "Падение",
-  "sp": "Caída",
-  "fr": "Chute",
-  "ar": "سقوط"
+  "NEW_RECORD": {
+    "en": "NEW RECORD!!",
+    "pt-BR": "NOVO RECORDE!!",
+    "ru": "НОВЫЙ РЕКОРД!!",
+    "sp": "¡NUEVO RÉCORD!!",
+    "fr": "NOUVEAU RECORD !!",
+    "ar": "رقم قياسي جديد!!"
   }
 }
