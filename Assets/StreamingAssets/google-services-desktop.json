@@ -7,22 +7,39 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:523092157913:ios:fd830cc25fdb76959025c8",
+        "mobilesdk_app_id": "1:523092157913:android:213b5a2a0b3f20899025c8",
         "android_client_info": {
           "package_name": "com.TheGameWise.PharaohFalls"
         }
       },
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCIxuYwRMSkBnUhdZ1K-4p6IP6UjMal9Tc"
+          "current_key": "AIzaSyBrKQaw282QtqNbN8IFo20nd0pqVc7YX-w"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 0
-        },
         "appinvite_service": {
-          "status": 1
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523092157913:android:03424c135f3a9a159025c8",
+        "android_client_info": {
+          "package_name": "com.thegamewise.pharaohfall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrKQaw282QtqNbN8IFo20nd0pqVc7YX-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }
