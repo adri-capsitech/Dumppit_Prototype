@@ -58,6 +58,7 @@ public class GameMechanics : MonoBehaviour
     }
     public void StartGame()
     {
+        AnalyticsLogger.LogGameStart();
         Time.timeScale = 1f;
         ResetGameState();
         isGameOver = false;
@@ -233,6 +234,7 @@ public class GameMechanics : MonoBehaviour
 
     public void GameOver()
     {
+       
         if (isGameOver == true)
         {
             if (AudioController.Instance != null)

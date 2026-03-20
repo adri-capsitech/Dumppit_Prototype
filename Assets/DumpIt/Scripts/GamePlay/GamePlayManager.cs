@@ -24,6 +24,7 @@ public class GamePlayManager : MonoBehaviour
     void Start()
     {
         //Debug.Log("GAME: StartGame()");
+       
         GameMechanics.Instance.StartGame();
     }
 
@@ -35,6 +36,11 @@ public class GamePlayManager : MonoBehaviour
     }
     public void GameOver()
     {
+        int score = DataManager.Instance.GetCurrentScore();
+        int bestScore = DataManager.Instance.GetBestScore();
+
+        // Log analytics here
+        AnalyticsLogger.LogGameOver(score, bestScore);
         DataManager.Instance.SaveBestScoreIfNeeded();
         GameUIManager.Instance.DisplayGameOverPanel();
 

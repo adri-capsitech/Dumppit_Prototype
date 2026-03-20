@@ -1,97 +1,43 @@
-using UnityEngine;
 using Firebase;
 using Firebase.Analytics;
-using Firebase.Crashlytics;
-using System;
+using Firebase.Extensions;
+using UnityEngine;
 
 public class FirebaseManager : MonoBehaviour
 {
-    public static FirebaseManager Instance;
-    public static string SessionId { get; private set; }
+    public static bool IsFirebaseReady { get; private set; }
 
-    bool firebaseReady = false;
+    private static bool initialized = false;
+    [SerializeField] private GameObject versionChecker;
 
-    void Awake()
+    private void Awake()
     {
-        if (Instance != null)
+        if (initialized)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        initialized = true;
         DontDestroyOnLoad(gameObject);
-
-        SessionId = Guid.NewGuid().ToString();
-        InitializeFirebase();
     }
 
-    void InitializeFirebase()
+    private void Start()
     {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-        {
-            if (task.Result == DependencyStatus.Available)
+        FirebaseApp.CheckAndFixDependenciesAsync()
+            .ContinueWithOnMainThread(task =>
             {
-                FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-                Crashlytics.IsCrashlyticsCollectionEnabled = true;
-
-                firebaseReady = true;
-
-                LogSessionStart();
-
-                //Debug.Log("[Firebase] Initialized | Session: " + SessionId);
-            }
-            else
-            {
-                Debug.LogError("[Firebase] Dependency error: " + task.Result);
-            }
-        });
-    }
-
-    void LogSessionStart()
-    {
-        if (!firebaseReady) return;
-
-        FirebaseAnalytics.LogEvent(
-            "session_start",
-            new Parameter("session_id", SessionId)
-        );
-    }
-
-    public void LogLevelStart(int level)
-    {
-        if (!firebaseReady) return;
-
-        FirebaseAnalytics.LogEvent(
-            "level_start",
-            new Parameter("level", level),
-            new Parameter("session_id", SessionId)
-        );
-        Crashlytics.SetCustomKey("level", level.ToString());
-        Crashlytics.SetCustomKey("session_id", SessionId);
-    }
-
-    public void LogLevelFail(int level, int attempt)
-    {
-        if (!firebaseReady) return;
-
-        FirebaseAnalytics.LogEvent(
-            "level_fail",
-            new Parameter("level", level),
-            new Parameter("attempt", attempt),
-            new Parameter("session_id", SessionId)
-        );
-    }
-
-    public void LogLevelComplete(int level, int attempt)
-    {
-        if (!firebaseReady) return;
-
-        FirebaseAnalytics.LogEvent(
-            "level_complete",
-            new Parameter("level", level),
-            new Parameter("attempt", attempt),
-            new Parameter("session_id", SessionId)
-        );
+                if (task.Result == DependencyStatus.Available)
+                {
+                    FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+                    IsFirebaseReady = true;
+                    versionChecker.SetActive(true);
+                    Debug.Log(" Firebase initialized");
+                }
+                else
+                {
+                    Debug.LogError(" Firebase dependency error: " + task.Result);
+                }
+            });
     }
 }

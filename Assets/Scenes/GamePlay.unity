@@ -591,6 +591,9 @@ MonoBehaviour:
   - name: HomeScreen
     state: 5
     prefab: {fileID: 1334456685375714757, guid: 0523486eb9a5e714aba8ee4301b8c1bb, type: 3}
+  - name: AppUpdate
+    state: 2
+    prefab: {fileID: 1081409600477524080, guid: 6675b58bd18193843a9f6bdfab352220, type: 3}
   overlays:
   - key: HighScorePopUp
     prefab: {fileID: 7510266027858559825, guid: 459a28d2478561e468cea0d4f15e2e86, type: 3}
