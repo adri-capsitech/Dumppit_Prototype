@@ -13,6 +13,7 @@ public class PopupAnimationController : MonoBehaviour
     {
         popupTextUI.text = popupText;
         DOTween.Sequence()
+            .SetUpdate(true)
             .Append(rectPanel.DOAnchorPosY(30, 0.5f, false))
             .AppendInterval(waitTime)
             .Append(rectPanel.DOAnchorPosY(-350, 1, false))
@@ -20,5 +21,9 @@ public class PopupAnimationController : MonoBehaviour
              {
                  AppStateManager.Instance.HideOverlay(popupName);
              });
+    }
+    void OnDisable()
+    {
+        DOTween.Kill(rectPanel);
     }
 }

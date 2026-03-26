@@ -3053,6 +3053,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 3307029878073131102}
+    - target: {fileID: 484479000565888497, guid: 9be52df99abeb2146956a4ab57b4fd7a, type: 3}
+      propertyPath: m_MovementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 484479000565888497, guid: 9be52df99abeb2146956a4ab57b4fd7a, type: 3}
+      propertyPath: m_DecelerationRate
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 484479000565888497, guid: 9be52df99abeb2146956a4ab57b4fd7a, type: 3}
+      propertyPath: m_ScrollSensitivity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1156903852574300429, guid: 9be52df99abeb2146956a4ab57b4fd7a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

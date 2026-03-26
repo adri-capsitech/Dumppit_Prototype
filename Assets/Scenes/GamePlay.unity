@@ -329,7 +329,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 8.72
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -824,6 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86240194908d245eabbae7d6a33f37cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirebaseManager
+  versionChecker: {fileID: 0}
 --- !u!4 &1043981753
 Transform:
   m_ObjectHideFlags: 0

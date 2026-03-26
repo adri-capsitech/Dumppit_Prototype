@@ -29,19 +29,19 @@ public class TutorialManager : MonoBehaviour
     }
     void PowerUpsTutorials()
     {
-        int Coins =DataManager.Instance.GetCurrentCoins();
-        if((Coins == 20) && (counter < 1))
+        int Coins = DataManager.Instance.GetCurrentCoins();
+        if ((Coins == 20) && (counter < 1))
         {
             tutorial_for_platform.SetActive(true);
             counter++;
             StartCoroutine(SwitchOffTutorials());
         }
-        if((Coins >= 30) && (counter < 2))
-        {
-            tutorial_for_swing.SetActive(true);
-            counter++;
-            StartCoroutine(SwitchOffTutorials());
-        }
+        // if((Coins >= 30) && (counter < 2))
+        // {
+        //     tutorial_for_swing.SetActive(true);
+        //     counter++;
+        //     StartCoroutine(SwitchOffTutorials());
+        // }
 
     }
 

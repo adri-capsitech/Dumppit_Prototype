@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class AdManager : MonoBehaviour
 {
+    // test ad unit IDs
 #if UNITY_ANDROID
-    private const string AD_UNIT_ID = "ca-app-pub-8530302013109448/8798025563";
-    private const string Inter_AD_UNIT_ID = "ca-app-pub-8530302013109448/2016994796";
+    private string TestrewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917";
+    private string TestinterstitialAdUnitId = "ca-app-pub-3940256099942544/1033173712";
 #elif UNITY_IPHONE
-        private const string AD_UNIT_ID = "ca-app-pub-8530302013109448/6171862224";
-        private const string Inter_AD_UNIT_ID = "ca-app-pub-8530302013109448/8836294835"; 
+    private string TestrewardedAdUnitId = "ca-app-pub-3940256099942544/1712485313";
+    private string TestinterstitialAdUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
-        private const string AD_UNIT_ID = "unused";
-        private const string Inter_AD_UNIT_ID = "unused";
+    private string TestrewardedAdUnitId = "unused";
+    private string TestinterstitialAdUnitId = "unused";
 #endif
-   
+
     private RewardedAd rewardedAd;
     private InterstitialAd interstitialAd;
     public static AdManager Instance { get; private set; }
@@ -41,7 +42,7 @@ public class AdManager : MonoBehaviour
         LoadAd();
         InterstitialLoadAd();
     }
-    
+
     void LoadAd()
     {
         // [START load_ad]
@@ -49,7 +50,7 @@ public class AdManager : MonoBehaviour
         var adRequest = new AdRequest();
 
         // Send the request to load the ad.
-        RewardedAd.Load(AD_UNIT_ID, adRequest, (RewardedAd ad, LoadAdError error) =>
+        RewardedAd.Load(TestrewardedAdUnitId, adRequest, (RewardedAd ad, LoadAdError error) =>
         {
             if (error != null)
             {
@@ -67,7 +68,7 @@ public class AdManager : MonoBehaviour
         var adRequest = new AdRequest();
 
         // Send the request to load the ad.
-        InterstitialAd.Load("Inter_AD_UNIT_ID", adRequest, (InterstitialAd ad, LoadAdError error) =>
+        InterstitialAd.Load(TestinterstitialAdUnitId, adRequest, (InterstitialAd ad, LoadAdError error) =>
         {
             if (error != null)
             {
@@ -80,24 +81,8 @@ public class AdManager : MonoBehaviour
             //Debug.Log("Interstitial Loaded");
         });
     }
-    
 
-    // public void ShowAd()
-    // {
-    //     // [START show_ad]
-    //     if (rewardedAd != null && rewardedAd.CanShowAd())
-    //     {
-    //         rewardedAd.Show((Reward reward) =>
-    //         {
-    //             // The ad was showen and the user earned a reward.
-    //             // PowerupsController.instance.UpdateAllPowerupCounts();
-    //             //ListenToAdEvents();
-    //             ReloadAd();
-    //         });
-    //     }
-    //     // [END show_ad]]
-    //     // AppStateManager.Instance.HideOverlay("WatchAdPopup");
-    // }
+
     public void ShowAd(Action onAdFinished)
     {
         if (rewardedAd != null && rewardedAd.CanShowAd())
@@ -130,27 +115,38 @@ public class AdManager : MonoBehaviour
     //         interstitialAd.Show();
     //     }
     // }
-    public void ShowInterstitial(System.Action onAdClosed)  
+    // public void ShowInterstitial(System.Action onAdClosed)
+    // {
+    //     if (interstitialAd != null && interstitialAd.CanShowAd())
+    //     {
+    //         InterstitialLoadAd(); // reload
+    //         onAdClosed?.Invoke();
+
+    //         interstitialAd.Show();
+    //     }
+    //     else
+    //     {
+    //         //Debug.Log("Interstitial not ready, skipping");
+    //         onAdClosed?.Invoke();
+    //         InterstitialLoadAd();
+    //     }
+
+    // }
+    public void ShowInterstitial(System.Action onAdClosed)
     {
-        if (interstitialAd != null && interstitialAd.CanShowAd())
+        if (interstitialAd == null || !interstitialAd.CanShowAd())
         {
-            interstitialAd.OnAdFullScreenContentClosed += () =>
-            {
-                //Debug.Log("Interstitial closed");
-                InterstitialLoadAd(); // reload
-                onAdClosed?.Invoke();
-            };
+            Debug.Log("Interstitial not ready");
+            return;
+        }
 
-            interstitialAd.Show();
-        }
-        else
-        {
-            //Debug.Log("Interstitial not ready, skipping");
-            onAdClosed?.Invoke();
-            InterstitialLoadAd();
-        }
+
+        Time.timeScale = 1f;
+        interstitialAd.Show();
+        onAdClosed?.Invoke();
+        InterstitialLoadAd();
+
     }
-
 
     void ListenToAdEvents()
     {
@@ -245,7 +241,7 @@ public class AdManager : MonoBehaviour
     public void ReloadAd()
     {
         var adRequest = new AdRequest();
-        RewardedAd.Load(AD_UNIT_ID, adRequest, (RewardedAd ad, LoadAdError error) =>
+        RewardedAd.Load(TestrewardedAdUnitId, adRequest, (RewardedAd ad, LoadAdError error) =>
         {
             if (error != null)
             {
@@ -263,14 +259,14 @@ public class AdManager : MonoBehaviour
         {
             // Reload the ad so that we can show another as soon as possible.
             var adRequest = new AdRequest();
-            InterstitialAd.Load("Inter_AD_UNIT_ID", adRequest, (InterstitialAd ad, LoadAdError error) =>
+            InterstitialAd.Load(TestinterstitialAdUnitId, adRequest, (InterstitialAd ad, LoadAdError error) =>
             {
                 // Handle ad loading here.
                 if (error != null)
                 {
                     Debug.LogError("Failed to reload ad: " + error);
                     return;
-                }   
+                }
 
                 interstitialAd = ad;
                 //Debug.Log("Ad reloaded");
@@ -278,5 +274,5 @@ public class AdManager : MonoBehaviour
         };
     }
 
-   
+
 }

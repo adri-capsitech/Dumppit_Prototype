@@ -5,7 +5,10 @@ public class DetectLanding : MonoBehaviour
 {
     public bool hasLanded = false;
     public AudioClip LandingSound;
+   // private Rigidbody rb;
+    //private bool checkingLanding = false;
 
+   
     void Update()
     {
         if (gameObject.transform.position.y < -5.5)

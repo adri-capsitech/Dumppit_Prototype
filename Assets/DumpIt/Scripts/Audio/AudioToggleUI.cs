@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,17 +14,19 @@ public class AudioToggleUI : MonoBehaviour
     [Header("UI Images")]
     public Image soundImage;
     public Image musicImage;
+    private Coroutine soundRoutine;
+    private Coroutine musicRoutine;
 
     void Start()
     {
-       
+
         isSoundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
         isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
 
         // ApplySFX();
         // ApplyMusic();
-        UpdateSFXUI();
-        UpdateMusicUI();
+        UpdateSFXUIInstant();
+        UpdateMusicUIInstant();
     }
 
     // ---------- SFX ----------
@@ -35,6 +38,10 @@ public class AudioToggleUI : MonoBehaviour
         ApplySFX();
         UpdateSFXUI();
     }
+    void UpdateSFXUIInstant()
+    {
+        soundImage.sprite = isSoundOn ? SoundOn : SoundOff;
+    }
 
     void ApplySFX()
     {
@@ -43,7 +50,10 @@ public class AudioToggleUI : MonoBehaviour
 
     void UpdateSFXUI()
     {
-        soundImage.sprite = isSoundOn ? SoundOn : SoundOff;
+        if (soundRoutine != null)
+            StopCoroutine(soundRoutine);
+
+        soundRoutine = StartCoroutine(AnimateToggle(soundImage, isSoundOn ? SoundOn : SoundOff));
     }
 
     // ---------- MUSIC ----------
@@ -63,6 +73,55 @@ public class AudioToggleUI : MonoBehaviour
 
     void UpdateMusicUI()
     {
+        if (musicRoutine != null)
+            StopCoroutine(musicRoutine);
+
+        musicRoutine = StartCoroutine(AnimateToggle(musicImage, isMusicOn ? MusicOn : MusicOff));
+    }
+    void UpdateMusicUIInstant()
+    {
         musicImage.sprite = isMusicOn ? MusicOn : MusicOff;
+    }
+
+
+    IEnumerator AnimateToggle(Image img, Sprite newSprite)
+    {
+        float duration = 0.1f;
+        float t = 0f;
+
+        Vector3 originalScale = img.transform.localScale;
+        Vector3 smallScale = originalScale * 0.8f;
+        Vector3 bigScale = originalScale * 1.1f;
+
+        // shrink
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            img.transform.localScale = Vector3.Lerp(originalScale, smallScale, t / duration);
+            yield return null;
+        }
+
+        // swap sprite at smallest point
+        img.sprite = newSprite;
+
+        // expand with slight bounce
+        t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            img.transform.localScale = Vector3.Lerp(smallScale, bigScale, t / duration);
+            yield return null;
+        }
+
+        // return to normal
+        t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            img.transform.localScale = Vector3.Lerp(bigScale, originalScale, t / duration);
+            yield return null;
+        }
+
+        img.transform.localScale = originalScale;
     }
 }

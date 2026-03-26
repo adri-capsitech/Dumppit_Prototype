@@ -37,6 +37,11 @@ public class GameMechanics : MonoBehaviour
     public AudioClip releaseSound;
     public AudioClip gamePlayMusic;
     public AudioClip highScorePop;
+    public float smoothTime = 0.5f; // duration of animation
+    public float currentOrthoSize;
+    public float zoomDuration = 0.8f;
+    private Coroutine zoomCoroutine;
+    public float edgeMargin = 100f; // margin from screen edges to ignore input
 
     private void Awake()
     {
@@ -53,6 +58,8 @@ public class GameMechanics : MonoBehaviour
         // Save pendulum defaults
         pendulumStartPos = pendulum.transform.position;
         pendulumStartRot = pendulum.transform.rotation;
+
+        currentOrthoSize = mainCamera.orthographicSize;
 
         // spawnPointStartPos = SpawnPoint.transform.localPosition;
     }
@@ -112,6 +119,20 @@ public class GameMechanics : MonoBehaviour
             isIdle = false;
         }
     }
+    bool IsInsideSafeArea(Vector2 pos)
+
+    {
+
+        return pos.x > edgeMargin &&
+
+               pos.x < Screen.width - edgeMargin &&
+
+               pos.y > edgeMargin &&
+
+               pos.y < Screen.height - edgeMargin;
+
+    }
+
     public void SpawnCars()
     {
         if (currentCar != null) return;
@@ -213,17 +234,60 @@ public class GameMechanics : MonoBehaviour
         //Debug.Log("Current Car after release:" + currentCar);
     }
 
+    // public void AdjustHeight()
+    // {
+    //     Vector3 pos = pendulum.transform.position;
+    //     pendulum.transform.position = new Vector3(pos.x, pos.y + heightIncrease, pos.z);
+
+    //     if (mainCamera.orthographic)
+    //     {
+    //         mainCamera.orthographicSize += heightIncrease;
+    //     }
+
+    //     //Debug.Log("Pendulum & Camera height increased!");
+    // }
+
+
+
     public void AdjustHeight()
     {
+        // keep pendulum instant (no issues here)
         Vector3 pos = pendulum.transform.position;
         pendulum.transform.position = new Vector3(pos.x, pos.y + heightIncrease, pos.z);
 
         if (mainCamera.orthographic)
         {
-            mainCamera.orthographicSize += heightIncrease;
+            float targetSize = mainCamera.orthographicSize + heightIncrease;
+
+            // stop only previous zoom (not all coroutines)
+            if (zoomCoroutine != null)
+            {
+                StopCoroutine(zoomCoroutine);
+            }
+
+            zoomCoroutine = StartCoroutine(SmoothZoom(targetSize));
+        }
+    }
+    IEnumerator SmoothZoom(float targetSize)
+    {
+        float startSize = mainCamera.orthographicSize;
+        float elapsed = 0f;
+
+        while (elapsed < zoomDuration)
+        {
+            float t = elapsed / zoomDuration;
+
+            // smooth easing (feels natural)
+            t = Mathf.SmoothStep(0, 1, t);
+
+            mainCamera.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
 
-        //Debug.Log("Pendulum & Camera height increased!");
+        mainCamera.orthographicSize = targetSize;
+        currentOrthoSize = targetSize;
     }
 
     public void UpdateScore()
@@ -234,7 +298,7 @@ public class GameMechanics : MonoBehaviour
 
     public void GameOver()
     {
-       
+
         if (isGameOver == true)
         {
             if (AudioController.Instance != null)
@@ -283,6 +347,7 @@ public class GameMechanics : MonoBehaviour
         // Reset camera   
         mainCamera.transform.position = cameraStartPos;
         mainCamera.orthographicSize = cameraStartSize;
+        currentOrthoSize = cameraStartSize;
         SwingMotion.Instance.swingZ = false;
         if (currentCar != null)
         {
@@ -293,6 +358,11 @@ public class GameMechanics : MonoBehaviour
         foreach (var r in allCar)
         {
             Destroy(r.gameObject);
+        }
+        if (zoomCoroutine != null)
+        {
+            StopCoroutine(zoomCoroutine);
+            zoomCoroutine = null;
         }
 
     }

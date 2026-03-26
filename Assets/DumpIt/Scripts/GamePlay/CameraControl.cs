@@ -110,7 +110,7 @@ public class CameraControl : MonoBehaviour
     {
         currentBasePos = defaultPos;
         currentBaseRot = defaultRot;
-        Camera.main.orthographicSize = defaultOrthoSize;
+        Camera.main.orthographicSize = GameMechanics.Instance.currentOrthoSize;
         StartCameraMove(currentBasePos, currentBaseRot);
     }
 

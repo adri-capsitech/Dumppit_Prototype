@@ -243,11 +243,11 @@ public class GameUIManager : MonoBehaviour
 
     public void UseSwingPowerUp()
     {
-        if (DataManager.Instance.SpendCoins(SWING_COST))
-        {
-            SwingMotion.Instance.swingZ = !SwingMotion.Instance.swingZ;
-            CheckPowerUps();
-        }
+        // if (DataManager.Instance.SpendCoins(SWING_COST))
+        // {
+        SwingMotion.Instance.swingZ = !SwingMotion.Instance.swingZ;
+        CheckPowerUps();
+        // }
     }
 
     #endregion
@@ -278,7 +278,7 @@ public class GameUIManager : MonoBehaviour
 
         // Power buttons
         Platformbtn.interactable = coins >= PLATFORM_COST;
-        Osciallate.interactable = coins >= SWING_COST;
+        // Osciallate.interactable = coins >= SWING_COST;
 
         // Extend buttons
         bool canExtend = coins >= PLATFORM_COST;
@@ -315,12 +315,12 @@ public class GameUIManager : MonoBehaviour
 
         if (AdManager.Instance != null)
         {
-            AdManager.Instance.ShowAd(OnAdFinishedRestart);
+            AdManager.Instance.ShowInterstitial(OnAdFinishedRestart);
         }
         else
         {
             Debug.LogError("AdManager is NULL! Restarting game without ad.");
-            RestartGame();   
+            RestartGame();
         }
     }
 
