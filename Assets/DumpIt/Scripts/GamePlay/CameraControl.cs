@@ -108,19 +108,19 @@ public class CameraControl : MonoBehaviour
 
     public void SwitchToDefaultCamera()
     {
-        currentBasePos = defaultPos;
+        currentBasePos = new Vector3(defaultPos.x, Camera.main.transform.position.y, defaultPos.z);
         currentBaseRot = defaultRot;
         Camera.main.orthographicSize = GameMechanics.Instance.currentOrthoSize;
         StartCameraMove(currentBasePos, currentBaseRot);
     }
 
+
     public void SwitchToZAxisCamera()
     {
-        currentBasePos = zAxisPos;
+        currentBasePos = new Vector3(zAxisPos.x, Camera.main.transform.position.y, zAxisPos.z);
         currentBaseRot = Quaternion.Euler(zAxisRot);
 
         StartCameraMove(currentBasePos, currentBaseRot);
     }
-
-
+    
 }

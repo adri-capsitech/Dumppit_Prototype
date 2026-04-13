@@ -42,6 +42,7 @@ public class GameMechanics : MonoBehaviour
     public float zoomDuration = 0.8f;
     private Coroutine zoomCoroutine;
     public float edgeMargin = 100f; // margin from screen edges to ignore input
+    public float upwardBias = 0.6f; // tweak between 0.5 - 0.8
 
     private void Awake()
     {
@@ -61,7 +62,6 @@ public class GameMechanics : MonoBehaviour
 
         currentOrthoSize = mainCamera.orthographicSize;
 
-        // spawnPointStartPos = SpawnPoint.transform.localPosition;
     }
     public void StartGame()
     {
@@ -74,13 +74,6 @@ public class GameMechanics : MonoBehaviour
         mainCamera = Camera.main;
         if (AudioController.Instance != null)
             AudioController.Instance.PlayMusic(gamePlayMusic);
-
-        // // SAVE INITIAL STATES
-        // pendulumStartPos = pendulum.transform.position;
-        // pendulumStartRot = pendulum.transform.rotation;
-
-        // cameraStartPos = mainCamera.transform.position;
-        // cameraStartSize = mainCamera.orthographicSize;
     }
 
     void LateUpdate()
@@ -137,25 +130,13 @@ public class GameMechanics : MonoBehaviour
     {
         if (currentCar != null) return;
 
-        //Debug.Log("Spawning Car ..");
         SpawnCollider spawnCollider = FindFirstObjectByType<SpawnCollider>();
         if (spawnCollider != null)
             spawnCollider.ResetTrigger();
 
         int index = UnityEngine.Random.Range(0, Cars.Count);
-        //  SpawnPoint.transform.localPosition = spawnPointStartPos;
-
-        // if (index == 0)
-        // {
-        //     SpawnPoint.transform.localPosition += Vector3.up * car1Offset;
-        // }
-        // else if (index == 2)
-        // {
-        //     SpawnPoint.transform.localPosition += Vector3.down * car2Offset;
-        // }
 
         currentCar = Instantiate(Cars[index], SpawnPoint.transform.position, SpawnPoint.transform.rotation, AppManager.Instance.GameLogic.transform);
-        //  currentCar.transform.SetParent(SpawnPoint.transform);
         Rigidbody rb = currentCar.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.useGravity = false;
@@ -167,26 +148,7 @@ public class GameMechanics : MonoBehaviour
         {
             landing.hasLanded = false;
         }
-
-        //Debug.Log("Current Car after Spawning:" + currentCar);
     }
-
-    // void ReleaseRustic()
-    // {
-    //     if (currentCar == null)
-    //     {
-    //         //Debug.Log("No car ..");
-    //         return;
-    //     }
-    //     //Debug.Log("Releasing Car ..");
-    //     var rb = currentCar.GetComponent<Rigidbody>();
-    //     currentCar.transform.SetParent(null);
-    //     // rb.isKinematic = false;
-    //     rb.useGravity = true;
-    //     rb.freezeRotation = false;
-    //     currentCar = null;
-    // }
-
 
     void ReleaseRustic()
     {
@@ -213,25 +175,8 @@ public class GameMechanics : MonoBehaviour
         rb.useGravity = true;
         rb.freezeRotation = false;
 
-        //Debug.Log("------------->Before release velocity: " + rb.linearVelocity);
-
-        // Vector3 forceDir;
-
-        // if (swingDirection == 1)
-        // {
-
-        //     forceDir = Vector3.right;
-        // }
-        // else
-        // {
-        //     forceDir = Vector3.left;
-        // }
-
-        // rb.AddForce(forceDir * forceStrength, ForceMode.Impulse);
-        // rb.AddForce(Vector3.down * 1.5f, ForceMode.Impulse);
-
         currentCar = null;
-        //Debug.Log("Current Car after release:" + currentCar);
+
     }
 
     // public void AdjustHeight()
@@ -247,11 +192,9 @@ public class GameMechanics : MonoBehaviour
     //     //Debug.Log("Pendulum & Camera height increased!");
     // }
 
-
-
     public void AdjustHeight()
     {
-        // keep pendulum instant (no issues here)
+        // move pendulum instantly
         Vector3 pos = pendulum.transform.position;
         pendulum.transform.position = new Vector3(pos.x, pos.y + heightIncrease, pos.z);
 
@@ -259,37 +202,51 @@ public class GameMechanics : MonoBehaviour
         {
             float targetSize = mainCamera.orthographicSize + heightIncrease;
 
-            // stop only previous zoom (not all coroutines)
+            //  calculate target camera Y
+            float targetY = mainCamera.transform.position.y + (heightIncrease * upwardBias);
+
             if (zoomCoroutine != null)
             {
                 StopCoroutine(zoomCoroutine);
             }
 
-            zoomCoroutine = StartCoroutine(SmoothZoom(targetSize));
+            zoomCoroutine = StartCoroutine(SmoothZoomAndMove(targetSize, targetY));
         }
     }
-    IEnumerator SmoothZoom(float targetSize)
+    IEnumerator SmoothZoomAndMove(float targetSize, float targetY)
     {
         float startSize = mainCamera.orthographicSize;
+        float startY = mainCamera.transform.position.y;
+
         float elapsed = 0f;
 
         while (elapsed < zoomDuration)
         {
             float t = elapsed / zoomDuration;
-
-            // smooth easing (feels natural)
             t = Mathf.SmoothStep(0, 1, t);
 
+            // Zoom
             mainCamera.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
+
+            // Move camera upward
+            float newY = Mathf.Lerp(startY, targetY, t);
+            Vector3 camPos = mainCamera.transform.position;
+            mainCamera.transform.position = new Vector3(camPos.x, newY, camPos.z);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
+        // Final snap (important)
         mainCamera.orthographicSize = targetSize;
+        mainCamera.transform.position = new Vector3(
+            mainCamera.transform.position.x,
+            targetY,
+            mainCamera.transform.position.z
+        );
+
         currentOrthoSize = targetSize;
     }
-
     public void UpdateScore()
     {
         if (DataManager.Instance) DataManager.Instance.UpdateScore();
@@ -305,32 +262,16 @@ public class GameMechanics : MonoBehaviour
                 AudioController.Instance.StopMusic();
             SwingMotion.Instance.stopSwing = true;
             Time.timeScale = 0;
-            //Debug.Log("Game Over");
             ResetGameState();
             CameraControl.Instance.SwitchToDefaultCamera();
-            // Destroy(r.gameObject);
             GamePlayManager.Instance.GameOver();
         }
     }
     private void ShowCelebrationEffect()
     {
-
-
         AppStateManager.Instance.ShowOverlay("HighScorePopUp");
         if (AudioController.Instance != null)
             AudioController.Instance.PlaySFX(highScorePop);
-        //Debug.Log("-> New High Score Reached DURING GAMEPLAY");
-        // if (celebrationEffect != null)
-        // {
-        //     var celebration = Instantiate(celebrationEffect, Camera.main.transform, false);
-        //     celebration.transform.position = Vector3.up;
-        //     celebration.Play();
-        //     AppStateManager.Instance.ShowOverlay("NewHighScore");
-        //     DOTween.Sequence().AppendInterval(2f).AppendCallback(() =>
-        //     {
-        //         celebration.Stop();
-        //         Destroy(celebration.gameObject);
-        //     });
 
     }
     public void ResetGameState()

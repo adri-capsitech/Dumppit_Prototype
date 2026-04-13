@@ -8,10 +8,10 @@ public class AdManager : MonoBehaviour
     // test ad unit IDs
 #if UNITY_ANDROID
     private string TestrewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917";
-    private string TestinterstitialAdUnitId = "ca-app-pub-3940256099942544/1033173712";
+    private string TestinterstitialAdUnitId = "ca-app-pub-8530302013109448/2016994796";
 #elif UNITY_IPHONE
-    private string TestrewardedAdUnitId = "ca-app-pub-3940256099942544/1712485313";
-    private string TestinterstitialAdUnitId = "ca-app-pub-3940256099942544/4411468910";
+    private string TestrewardedAdUnitId = "ca-app-pub-8530302013109448/6171862224";
+    private string TestinterstitialAdUnitId = "ca-app-pub-8530302013109448/8836294835";
 #else
     private string TestrewardedAdUnitId = "unused";
     private string TestinterstitialAdUnitId = "unused";
@@ -137,6 +137,7 @@ public class AdManager : MonoBehaviour
         if (interstitialAd == null || !interstitialAd.CanShowAd())
         {
             Debug.Log("Interstitial not ready");
+            onAdClosed?.Invoke();
             return;
         }
 

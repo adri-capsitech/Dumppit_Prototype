@@ -18,5 +18,5 @@
   <projectSetting name="GooglePlayServices.UseGradleDaemon" value="True" />
   <projectSetting name="GooglePlayServices.UseJetifier" value="True" />
   <projectSetting name="GooglePlayServices.UserRejectedGradleUpgrade" value="False" />
-  <projectSetting name="GooglePlayServices.VerboseLogging" value="True" />
+  <projectSetting name="GooglePlayServices.VerboseLogging" value="False" />
 </projectSettings>

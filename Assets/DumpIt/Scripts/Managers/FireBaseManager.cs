@@ -17,6 +17,7 @@ public class FirebaseManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        Application.targetFrameRate = 120;
 
         initialized = true;
         DontDestroyOnLoad(gameObject);

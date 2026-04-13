@@ -282,7 +282,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2670727390882814949}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &8585295196924575673
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -413,6 +413,7 @@ MonoBehaviour:
   currentOrthoSize: 0
   zoomDuration: 0.8
   edgeMargin: 100
+  upwardBias: 0.6
 --- !u!1 &3298099034798791226
 GameObject:
   m_ObjectHideFlags: 0
