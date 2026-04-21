@@ -9,6 +9,8 @@ public class UpdatePanelScript : MonoBehaviour
     [SerializeField] private GameObject UpdatePanel;
     [SerializeField] private Button updateBtn;
     [SerializeField] private TMP_Text LoadingTxt;
+    public string playStoreUrl;
+    public string appStoreUrl;
 
     private void Awake()
     {
@@ -16,9 +18,14 @@ public class UpdatePanelScript : MonoBehaviour
     }
     void Start()
     {
+
         updateBtn.onClick.AddListener(() =>
         {
-            Application.OpenURL("https://play.google.com/store/apps/details?id=com.TheGameWise.PixoJump");
+#if UNITY_ANDROID
+        Application.OpenURL(playStoreUrl);
+#elif UNITY_IOS
+            Application.OpenURL(appStoreUrl);
+#endif
         });
         //  gameObject.SetActive(false);
     }

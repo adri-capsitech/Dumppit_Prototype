@@ -16,11 +16,7 @@ public class VersionChecker : MonoBehaviour
 
     public string currentVersion;
 
-    [SerializeField] private GameObject UpdatePanel;
 
-    [SerializeField] private Button updateBtn;
-    [SerializeField] private Button SkipBtn;
-    [SerializeField] private TMP_Text LoadingTxt;
     private void Awake()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
@@ -39,17 +35,27 @@ public class VersionChecker : MonoBehaviour
     }
     public void CheckVersion()
     {
-        LoadingTxt.gameObject.SetActive(true);
+         UpdatePanelScript.instance.setLoading(false);
+         currentVersion = Application.version;
 
         StartCoroutine(SafeFirestoreCall<DocumentSnapshot>(
             () => db.Collection("AppConfig").Document("version").GetSnapshotAsync(),
             snapshot =>
             {
-                LoadingTxt.gameObject.SetActive(false);
+                UpdatePanelScript.instance.setLoading(false);
 
                 if (snapshot.Exists)
                 {
-                    string latestVersion = snapshot.GetValue<string>("latestVersion");
+                    string latestVersion;
+                   #if UNITY_ANDROID
+                        latestVersion = snapshot.GetValue<string>("latestVersion");
+                        string androidlink = snapshot.GetValue<string>("AndroidLink");
+                        UpdatePanelScript.instance.playStoreUrl = androidlink;
+                   #elif UNITY_IOS
+                        latestVersion = snapshot.GetValue<string>("latestVersionIos");
+                        string iosLink = snapshot.GetValue<string>("IosLink");
+                        UpdatePanelScript.instance.appStoreUrl = iosLink;
+                     #endif
                     bool forceUpdate = snapshot.GetValue<bool>("forceUpdate");
 
                     CompareVersions(currentVersion, latestVersion, forceUpdate);
@@ -63,7 +69,7 @@ public class VersionChecker : MonoBehaviour
 
             () =>
             {
-                LoadingTxt.gameObject.SetActive(false);
+                UpdatePanelScript.instance.setLoading(false);
                 AndroidToast.ShowToast("Can`t fetch the latest version");
                 GoToHome();
             }
@@ -77,42 +83,38 @@ public class VersionChecker : MonoBehaviour
         {
             if (force)
             {
-                LoadingTxt.gameObject.SetActive(false);
-                ShowForceUpdatePopup();
+                if (UpdatePanelScript.instance != null)
+                {
+                    UpdatePanelScript.instance.setLoading(false);
+                    UpdatePanelScript.instance.ShowForceUpdatePopup();
+                }
+
             }
             else
             {
-                LoadingTxt.gameObject.SetActive(false);
-                ShowOptionalUpdatePopup();
+                if (UpdatePanelScript.instance != null)
+                {
+                    UpdatePanelScript.instance.setLoading(false);
+                    UpdatePanelScript.instance.ShowOptionalUpdatePopup();
+                }
+
             }
         }
         else
         {
-            LoadingTxt.gameObject.SetActive(false);
-        }
-    }
-
-    public void ShowForceUpdatePopup()
-    {
-        if (UpdatePanel != null)
-        {
-            UpdatePanel.SetActive(true);
-            SkipBtn.gameObject.SetActive(false);
-        }
-    }
-
-    public void ShowOptionalUpdatePopup()
-    {
-
-        if (UpdatePanel != null)
-        {
-            UpdatePanel.SetActive(true);
+            if (UpdatePanelScript.instance != null)
+            {
+                UpdatePanelScript.instance.setLoading(false);
+                GoToHome();
+            }
         }
     }
 
     public void GoToHome()
     {
         Debug.Log("Go Home Called");
+            AppStateManager.Instance.SetHome();
+            // AppStateManager.Instance.SetGameplay();
         // write your logic according to the game.
     }
 

@@ -20,7 +20,7 @@ public class AppManager : MonoBehaviour
 
     void Start()
     {
-        AppStateManager.Instance.SetHome();
+        AppStateManager.Instance.SetSplashOnLoad();
     //    Application.targetFrameRate = 120;
         //  AppStateManager.Instance.SetGameplay();
         //this.StartGame();
